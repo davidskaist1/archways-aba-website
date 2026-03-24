@@ -120,9 +120,9 @@
      ANNOUNCEMENT BAR
 ════════════════════════════════════════════════════ -->
 <div class="announce-bar" role="banner" aria-label="Site announcement">
-  <span>Now Accepting New Clients Across Missouri</span>
+  <span>Missouri's Gateway to ABA Therapy</span>
   <span class="announce-bar__sep">·</span>
-  <span>Most Insurance Accepted · Medicaid Welcome</span>
+  <span>Now Accepting New Clients · Most Insurance Accepted · Medicaid Welcome</span>
   <span class="announce-bar__sep">·</span>
   <a href="contact.html">Schedule a Free Consultation &#8594;</a>
 </div>
@@ -644,12 +644,10 @@
      PARENT GUIDE FEATURE SECTION
 ════════════════════════════════════════════════════ -->
 <section style="background:var(--teal-900);padding:var(--space-20) 0;overflow:hidden;position:relative;" aria-labelledby="guide-feature-heading">
-  <!-- Decorative Gateway Arch watermark -->
-  <div aria-hidden="true" style="position:absolute;right:4%;top:50%;transform:translateY(-50%);opacity:0.045;pointer-events:none;width:min(480px,45vw);">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -3 56 73">
-      <path d="M 4,70 C 4,38 10,4 19,4 L 19,11 C 16,13 11,44 13,70 Z" fill="white"/>
-      <path d="M 52,70 C 52,38 46,4 37,4 L 37,11 C 40,13 45,44 43,70 Z" fill="white"/>
-      <path d="M 19,4 C 19,-2 37,-2 37,4 L 37,11 C 32,13 24,13 19,11 Z" fill="white"/>
+  <!-- Decorative Gateway Arch watermark — catenary shape matching logo -->
+  <div aria-hidden="true" style="position:absolute;right:4%;top:50%;transform:translateY(-50%);opacity:0.05;pointer-events:none;width:min(480px,45vw);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 62">
+      <path d="M 3,62 C 3,18 16,2 28,2 C 40,2 53,18 53,62 L 45,62 C 45,24 32,8 28,8 C 24,8 11,24 11,62 Z" fill="white"/>
     </svg>
   </div>
   <div class="container" style="position:relative;z-index:1;">
@@ -861,6 +859,16 @@
     });
   })();
 </script>
+
+<!-- ═══════════════════════════════════════════════════
+     ARIA AI CHATBOT WIDGET
+     Change ARIA_API_BASE to your server URL when deploying
+════════════════════════════════════════════════════ -->
+<script>
+  // Point this at your chatbot server (update for production deployment)
+  window.ARIA_API_BASE = 'http://localhost:3001';
+</script>
+<script src="/js/chatbot.js" defer></script>
 
 </body>
 </html>

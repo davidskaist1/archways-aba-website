@@ -37,6 +37,76 @@
     ]
   }
   </script>
+  <!-- FAQPage schema — triggers Google rich snippets (expandable Q&As in search results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "My child is only 18 months old. Isn't it too early to worry about autism?",
+        "acceptedAnswer": {"@type": "Answer", "text": "No — in fact, the earlier the better. Autism can be reliably diagnosed in many children by age 18–24 months, and some children receive a diagnosis as early as 12–14 months. The American Academy of Pediatrics recommends autism-specific screening at 18 and 24 months for all children. Early Intervention services in Missouri (First Steps) can begin for any child showing developmental delays without a formal autism diagnosis — you don't need to wait."}
+      },
+      {
+        "@type": "Question",
+        "name": "My pediatrician said to 'wait and see.' What should I do?",
+        "acceptedAnswer": {"@type": "Answer", "text": "If your pediatrician dismisses your concerns, you have options: ask specifically for a referral for a developmental evaluation; contact Missouri's First Steps program directly — no referral required; seek a second opinion from a developmental pediatrician; or contact the Thompson Center directly. You do not need your pediatrician's permission to pursue an evaluation."}
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to get an autism evaluation in Missouri?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Waitlists vary widely. At major centers like the Thompson Center in Columbia or large hospital systems in St. Louis and Kansas City, waits can be 6–18 months. Private psychologists often have shorter waits — sometimes 4–8 weeks. Get on multiple waitlists simultaneously the moment you decide to pursue an evaluation."}
+      },
+      {
+        "@type": "Question",
+        "name": "What if we can't afford an autism evaluation?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Several options exist: Missouri school districts must conduct free special education evaluations for children over age 3; Missouri Medicaid (MO HealthNet) covers developmental evaluations for enrolled children; university training clinics such as Mizzou offer evaluations at reduced cost; the Thompson Center at University of Missouri accepts Medicaid and offers assistance for uninsured families."}
+      },
+      {
+        "@type": "Question",
+        "name": "Does Missouri Medicaid pay for ABA therapy?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. Missouri Medicaid (MO HealthNet) covers ABA therapy for children with an autism diagnosis through both traditional Medicaid and managed care plans (Healthy Blue, UnitedHealthcare Community Plan, Missouri Care, and Home State Health). Prior authorization is required, which your ABA provider handles. Archways ABA accepts Missouri Medicaid and manages all billing and authorization paperwork."}
+      },
+      {
+        "@type": "Question",
+        "name": "My child was just diagnosed. How soon should we start ABA?",
+        "acceptedAnswer": {"@type": "Answer", "text": "As soon as possible. Children who begin ABA therapy earlier — especially between ages 2 and 5 — tend to make greater gains. Intake processes typically take 2–4 weeks, so contacting an ABA provider immediately after diagnosis matters. Starting that clock early is important."}
+      },
+      {
+        "@type": "Question",
+        "name": "What if my child doesn't have a formal diagnosis yet — can they still start services?",
+        "acceptedAnswer": {"@type": "Answer", "text": "For children under 3, yes — Missouri's First Steps Early Intervention program provides services based on developmental delay, not a specific diagnosis. Speech therapy, occupational therapy, and developmental services can begin right now. For ABA therapy, most insurance plans require a formal autism diagnosis. However, your intake with Archways ABA can begin — including our assessment process — while the diagnosis is being finalized."}
+      },
+      {
+        "@type": "Question",
+        "name": "How many hours of ABA therapy does my child need?",
+        "acceptedAnswer": {"@type": "Answer", "text": "It depends on your child's individual needs, as determined by a clinical assessment. Research points to 25–40 hours per week of early intensive behavioral intervention for young children with significant needs. However, not every child requires that level of intensity. Your BCBA will conduct a comprehensive assessment and recommend a service level based on your child's skill profile, family capacity, and treatment goals."}
+      },
+      {
+        "@type": "Question",
+        "name": "Will my child grow out of autism?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Autism is a lifelong neurological difference — it doesn't disappear. However, the way autism presents can change dramatically with development, maturity, and effective intervention. Many children make substantial gains in communication, social skills, and adaptive behavior. The goal of ABA therapy is not to eliminate autism, but to help each child build the skills to live the fullest, most independent life possible."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do I know if an ABA provider is good?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Look for: clinical leadership by a Board Certified Behavior Analyst (BCBA) — verify at BACB.com; individualized programming based on a comprehensive assessment; a data-driven approach; active parent involvement and training; clear communication about your child's progress; and evidence-based techniques. At Archways ABA, all of these are non-negotiables."}
+      }
+    ]
+  }
+  </script>
+  <!-- BreadcrumbList schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.archwaysaba.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Parent Guide", "item": "https://www.archwaysaba.com/autism-journey.html"}
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -168,8 +238,8 @@
 </svg>
 <div id="progress-bar" aria-hidden="true"></div>
 <div class="announce-bar" role="banner" aria-label="Site announcement">
-  <span>Now Accepting New Clients Across Missouri</span><span class="announce-bar__sep">·</span>
-  <span>Most Insurance Accepted · Medicaid Welcome</span><span class="announce-bar__sep">·</span>
+  <span>Missouri's Gateway to ABA Therapy</span><span class="announce-bar__sep">·</span>
+  <span>Now Accepting New Clients · Most Insurance Accepted · Medicaid Welcome</span><span class="announce-bar__sep">·</span>
   <a href="contact.html">Schedule a Free Consultation &#8594;</a>
 </div>
 <nav class="nav nav--white nav--solid" role="navigation" aria-label="Main navigation" id="main-nav">
@@ -692,6 +762,21 @@
 
     </div>
     <p style="text-align:center;color:rgba(255,255,255,0.6);font-size:0.85rem;margin-top:var(--space-8);">See our full directory: <a href="blog-missouri-autism-resources.html" style="color:rgba(255,255,255,0.85);">Missouri Autism Resources Guide →</a></p>
+  </div>
+</section>
+
+<!-- E-E-A-T: About This Guide -->
+<section style="background:#fff;padding:var(--space-6) 0 0;">
+  <div class="container" style="max-width:860px;">
+    <div style="background:var(--teal-50);border:1px solid var(--teal-100);border-radius:var(--radius-xl);padding:var(--space-6);display:flex;gap:var(--space-5);align-items:flex-start;">
+      <div aria-hidden="true" style="flex-shrink:0;width:48px;height:48px;background:var(--teal-800);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 4v4l3 3"/></svg>
+      </div>
+      <div>
+        <p style="margin:0 0 var(--space-1);font-weight:700;color:var(--teal-900);font-size:0.95rem;">About This Guide</p>
+        <p style="margin:0;color:#334155;font-size:0.92rem;line-height:1.7;">This guide was written and reviewed by the <strong>Archways ABA Clinical Team</strong>, including Board Certified Behavior Analysts (BCBAs) with experience supporting Missouri families from first concern through active therapy. It is updated regularly to reflect current Missouri-specific resources, insurance policies, and clinical best practices. It is informational only and does not constitute clinical advice.</p>
+      </div>
+    </div>
   </div>
 </section>
 
