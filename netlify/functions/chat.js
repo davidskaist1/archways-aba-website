@@ -93,7 +93,7 @@ exports.handler = async (event) => {
       console.error('Anthropic API error:', res.status, err);
       return {
         statusCode: 500, headers: cors,
-        body: JSON.stringify({ reply: "I had a little trouble just now — please try again or call us at (314) 474-0091!" }),
+        body: JSON.stringify({ reply: "DEBUG: " + res.status + " — " + err }),
       };
     }
 
