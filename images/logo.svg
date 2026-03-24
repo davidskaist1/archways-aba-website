@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -3 56 73" role="img" aria-label="Archways ABA logo mark">
+  <defs>
+    <!-- Left leg: bright silver at inner-top, dark navy at outer-base -->
+    <linearGradient id="lgL" x1="0.82" y1="0.05" x2="0.18" y2="0.95">
+      <stop offset="0%"   stop-color="#C8D8E4"/>
+      <stop offset="22%"  stop-color="#8BAABB"/>
+      <stop offset="55%"  stop-color="#4E718A"/>
+      <stop offset="100%" stop-color="#1E3A4C"/>
+    </linearGradient>
+    <!-- Right leg: highlight at inner-top, dark at outer-base -->
+    <linearGradient id="lgR" x1="0.18" y1="0.05" x2="0.72" y2="0.95">
+      <stop offset="0%"   stop-color="#D4E2EC"/>
+      <stop offset="22%"  stop-color="#96B4C6"/>
+      <stop offset="55%"  stop-color="#5A7E96"/>
+      <stop offset="100%" stop-color="#243C52"/>
+    </linearGradient>
+    <!-- Crown cap: bright silver at top, mid-teal at bottom -->
+    <linearGradient id="lgCap" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%"   stop-color="#D8EAEE"/>
+      <stop offset="100%" stop-color="#7EA6BC"/>
+    </linearGradient>
+  </defs>
+  <!-- Left leg: tapers from wide base (x=4–14) up to crown-left (x=19) -->
+  <path d="M 4,70 C 4,38 10,4 19,4 L 19,11 C 16,13 11,44 13,70 Z" fill="url(#lgL)"/>
+  <!-- Right leg: tapers from wide base (x=42–52) up to crown-right (x=37) -->
+  <path d="M 52,70 C 52,38 46,4 37,4 L 37,11 C 40,13 45,44 43,70 Z" fill="url(#lgR)"/>
+  <!-- Crown cap: wide rounded arch connecting both legs — deeply curved top -->
+  <path d="M 19,4 C 19,-2 37,-2 37,4 L 37,11 C 32,13 24,13 19,11 Z" fill="url(#lgCap)"/>
+  <!-- Inner-face highlight stroke on left leg -->
+  <path d="M 21,7 C 18,18 15,42 14,62" stroke="rgba(200,228,242,0.52)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Crown apex highlight — wider glow at the top of the arch -->
+  <ellipse cx="28" cy="1" rx="7" ry="2.8" fill="rgba(228,244,252,0.75)"/>
+</svg>

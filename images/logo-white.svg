@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -3 56 73" role="img" aria-label="Archways ABA logo mark">
+  <!-- Left leg -->
+  <path d="M 4,70 C 4,38 10,4 19,4 L 19,11 C 16,13 11,44 13,70 Z" fill="rgba(255,255,255,0.95)"/>
+  <!-- Right leg -->
+  <path d="M 52,70 C 52,38 46,4 37,4 L 37,11 C 40,13 45,44 43,70 Z" fill="rgba(255,255,255,0.72)"/>
+  <!-- Crown cap: wide rounded arch -->
+  <path d="M 19,4 C 19,-2 37,-2 37,4 L 37,11 C 32,13 24,13 19,11 Z" fill="rgba(255,255,255,0.90)"/>
+  <!-- Inner highlight stroke -->
+  <path d="M 21,7 C 18,18 15,42 14,62" stroke="rgba(255,255,255,0.4)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Crown apex glow -->
+  <ellipse cx="28" cy="1" rx="7" ry="2.8" fill="rgba(255,255,255,0.85)"/>
+</svg>

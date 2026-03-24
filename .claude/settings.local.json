@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\\\Users\\\\dovid\\\\.claude\\\\Website\\\\images\")",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Bash(__NEW_LINE_1321c7158f478212__ grep:*)",
+      "Bash(__NEW_LINE_1321c7158f478212__ done:*)",
+      "Bash(head -20 grep -n \"nav-links\\\\|About Us\\\\|Locations\\\\|servicesToggle\\\\|servicesDropdown\\\\|</body>\" \"/C/Users/dovid/.claude/Website/blog.html\")",
+      "Bash(head -20 grep -n \"nav-links\\\\|About Us\\\\|Locations\\\\|servicesToggle\\\\|servicesDropdown\\\\|</body>\" \"/C/Users/dovid/.claude/Website/careers.html\")",
+      "Bash(head -20 grep -n \"nav-links\\\\|About Us\\\\|Locations\\\\|servicesToggle\\\\|servicesDropdown\\\\|</body>\" \"/C/Users/dovid/.claude/Website/contact.html\")",
+      "Bash(head -20 grep -n \"nav-links\\\\|About Us\\\\|Locations\\\\|servicesToggle\\\\|servicesDropdown\\\\|</body>\" \"/C/Users/dovid/.claude/Website/locations.html\")",
+      "Bash(head -20 grep -n \"nav-links\\\\|About Us\\\\|Locations\\\\|servicesToggle\\\\|servicesDropdown\\\\|</body>\" \"/C/Users/dovid/.claude/Website/privacy.html\")",
+      "Bash(do)",
+      "Bash(sed -i 's/White <span>Diamond<\\\\/span>\\\\&nbsp;ABA/Archways <span>ABA<\\\\/span>/g' \"$f\")",
+      "Bash(echo \"Fixed: $f\")",
+      "Bash(done)",
+      "Bash(sed -i 's|<li><a href=\"\"index.html#services\"\">Center-Based ABA</a></li>|<li><a href=\"\"index.html#services\"\">Center-Based ABA \\(Coming Soon\\)</a></li>|g' \"$f\")",
+      "Bash(echo \"Updated: $f\")",
+      "Bash(wc -l \"C:/Users/dovid/.claude/Website/services/\"*.html)",
+      "Bash(dir C:Usersdovid.claudeWebsiteservices)",
+      "Bash(echo 'NO SERVICES DIR' grep -c White.*Diamond C:Usersdovid.claudeWebsiteabout.html 2)",
+      "Bash(/dev/null grep:*)",
+      "Bash(dir \"C:\\\\Users\\\\dovid\\\\.claude\\\\Website\\\\services\")",
+      "Bash(grep -l \"tokens.css\" C:/Users/dovid/.claude/Website/*.html C:/Users/dovid/.claude/Website/services/*.html)",
+      "Bash(grep -c nav-logo-tagline C:/Users/dovid/.claude/Website/*.html C:/Users/dovid/.claude/Website/services/*.html)",
+      "Bash(grep -rl nav-logo-tagline C:/Users/dovid/.claude/Website/*.html C:/Users/dovid/.claude/Website/services/*.html)",
+      "Bash(python3:*)",
+      "Bash(sed -i 's|<a href=\"\"\"\"#\"\"\"\">How ABA Therapy Builds Communication|<a href=\"\"\"\"blog-aba-communication.html\"\"\"\">How ABA Therapy Builds Communication|g' blog.html)",
+      "Bash(sed -i 's|<a href=\"\"\"\"#\"\"\"\">5 ABA Strategies You Can|<a href=\"\"\"\"blog-aba-home-strategies.html\"\"\"\">5 ABA Strategies You Can|g' blog.html)",
+      "Bash(sed -i 's|<a href=\"\"\"\"#\"\"\"\">Does Missouri Medicaid Cover|<a href=\"\"\"\"blog-missouri-medicaid-aba.html\"\"\"\">Does Missouri Medicaid Cover|g' blog.html)",
+      "Bash(sed -i 's|<a href=\"\"\"\"#\"\"\"\">Early Signs of Autism|<a href=\"\"\"\"blog-early-signs-autism.html\"\"\"\">Early Signs of Autism|g' blog.html)",
+      "Bash(sed -i 's|<a href=\"\"\"\"#\"\"\"\">Missouri Special Education Rights|<a href=\"\"\"\"blog-missouri-special-education.html\"\"\"\">Missouri Special Education Rights|g' blog.html)",
+      "Bash(ls C:/Users/dovid/.claude/Website/blog-*.html)",
+      "Bash(sed -i 's|formspree\\\\.io/f/xlgpqloq|formspree.io/f/mpqyvdya|g' \"C:/Users/dovid/.claude/Website/contact.html\")",
+      "Bash(sed -i 's|formspree\\\\.io/f/mpqyvdya|formspree.io/f/xlgpqloq|g' \"C:/Users/dovid/.claude/Website/blog.html\" \"C:/Users/dovid/.claude/Website/careers.html\")",
+      "Bash(git --version)",
+      "Bash(grep -l autism-journey.html C:/Users/dovid/.claude/Website/*.html C:/Users/dovid/.claude/Website/services/*.html)",
+      "Bash(sed -i 's|<a href=\"\"contact\\\\.html\"\" role=\"\"menuitem\"\">Contact</a>|<a href=\"\"autism-journey.html\"\" role=\"\"menuitem\"\">Parent Guide</a>\\\\n      <a href=\"\"contact.html\"\" role=\"\"menuitem\"\">Contact</a>|g' \"$f\")",
+      "Read(//c/Users/dovid/.claire/Website/**)"
+    ]
+  }
+}

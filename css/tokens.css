@@ -1,0 +1,286 @@
+/* ============================================================
+   Archways ABA — Design Token System
+   ============================================================
+   HOW TO REBRAND:
+   This file is the single source of truth for all visual
+   design decisions. To change the brand:
+
+   1. Update the PRIMITIVE VALUES in the "Brand Palette" section
+   2. Update the SEMANTIC ALIASES to point to new primitives
+   3. Font: Change --font-sans in "Typography" section
+   4. Everything in styles.css uses these variables automatically
+
+   COLOR BRAND:
+   Primary   = Deep Blue-Teal  (#1E5568)
+   Accent    = Gold            (#C9A843)
+   Secondary = Blue-Teal Light (#3D8EB0)
+   ============================================================ */
+
+:root {
+
+  /* ──────────────────────────────────────────────────────────
+     BRAND PALETTE — PRIMITIVE VALUES
+     COLOR BRAND:
+     Primary   = Deep Blue-Teal  (#1E5568)
+     Accent    = Gold            (#C9A843)
+     Secondary = Blue-Teal Light (#3D8EB0)
+  ────────────────────────────────────────────────────────── */
+
+  /* Blue-Teal / Primary scale */
+  --teal-50:  #EBF5FA;
+  --teal-100: #C8E5F1;
+  --teal-200: #93CBE3;
+  --teal-300: #5DAFD1;
+  --teal-400: #3597BE;
+  --teal-500: #2280A8;   /* mid blue-teal */
+  --teal-600: #1B698C;   /* brand teal */
+  --teal-700: #165372;
+  --teal-800: #1E5568;   /* deep teal (primary) */
+  --teal-900: #0F3344;
+  --teal-950: #071C27;
+
+  /* Gold / Accent scale */
+  --gold-50:  #FDF9ED;
+  --gold-100: #FAF0C9;
+  --gold-200: #F5E094;
+  --gold-300: #EFD05E;
+  --gold-400: #E9BF28;   /* vivid gold */
+  --gold-500: #C9A843;   /* brand gold */
+  --gold-600: #A88629;
+  --gold-700: #86671A;
+  --gold-800: #64490D;
+  --gold-900: #422A05;
+  --gold-950: #211403;
+
+  /* Teal Light / Secondary scale */
+  --teal-light-50:  #EBF7FB;
+  --teal-light-100: #C7E9F3;
+  --teal-light-200: #8DD2E8;
+  --teal-light-300: #52BADC;
+  --teal-light-400: #24A3CF;
+  --teal-light-500: #168CBD;   /* vibrant blue-teal (secondary) */
+  --teal-light-600: #10729E;
+  --teal-light-700: #0B587E;
+  --teal-light-800: #08405E;
+  --teal-light-900: #04283C;
+  --teal-light-950: #02131E;
+
+  /* Neutral scale */
+  --neutral-50:  #F8FAFC;
+  --neutral-100: #F1F5F9;
+  --neutral-200: #E2E8F0;
+  --neutral-300: #CBD5E1;
+  --neutral-400: #94A3B8;
+  --neutral-500: #64748B;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1E293B;
+  --neutral-900: #0F172A;
+  --neutral-950: #020617;
+
+  /* Pure tones */
+  --white: #FFFFFF;
+  --black: #000000;
+
+  /* ──────────────────────────────────────────────────────────
+     SEMANTIC COLOR ALIASES
+  ────────────────────────────────────────────────────────── */
+
+  --color-primary:          var(--teal-800);
+  --color-primary-hover:    var(--teal-900);
+  --color-primary-light:    var(--teal-100);
+  --color-primary-mid:      var(--teal-600);
+
+  --color-accent:           var(--gold-500);
+  --color-accent-hover:     var(--gold-600);
+  --color-accent-light:     var(--gold-50);
+  --color-accent-vivid:     var(--gold-400);
+
+  --color-secondary:        var(--teal-light-500);
+  --color-secondary-hover:  var(--teal-light-600);
+  --color-secondary-light:  var(--teal-light-50);
+  --color-secondary-mid:    var(--teal-light-700);
+
+  --color-bg:               var(--white);
+  --color-bg-alt:           var(--neutral-50);
+  --color-bg-dark:          var(--teal-800);
+  --color-bg-darker:        var(--teal-900);
+  --color-surface:          var(--white);
+  --color-surface-raised:   var(--neutral-50);
+
+  --color-text:             var(--teal-900);
+  --color-text-muted:       var(--neutral-600);
+  --color-text-subtle:      var(--neutral-400);
+  --color-text-on-dark:     rgba(255, 255, 255, 0.90);
+  --color-text-on-dark-muted: rgba(255, 255, 255, 0.65);
+
+  --color-border:           var(--neutral-200);
+  --color-border-strong:    var(--neutral-300);
+  --color-border-focus:     var(--teal-light-500);
+
+  --color-success:          #059669;
+  --color-success-light:    #ECFDF5;
+  --color-error:            #DC2626;
+  --color-error-light:      #FEF2F2;
+  --color-warning:          #D97706;
+  --color-warning-light:    #FFFBEB;
+
+  /* ──────────────────────────────────────────────────────────
+     TYPOGRAPHY
+  ────────────────────────────────────────────────────────── */
+  --font-sans:   'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:   'JetBrains Mono', 'Fira Code', ui-monospace, 'Courier New', monospace;
+  --font-serif:  Georgia, 'Times New Roman', serif;
+
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-extrabold:800;
+
+  --text-xs:    clamp(0.70rem, 0.68rem + 0.10vw, 0.75rem);
+  --text-sm:    clamp(0.813rem, 0.79rem + 0.11vw, 0.875rem);
+  --text-base:  clamp(0.938rem, 0.92rem + 0.09vw, 1rem);
+  --text-lg:    clamp(1rem, 0.96rem + 0.20vw, 1.125rem);
+  --text-xl:    clamp(1.125rem, 1.07rem + 0.28vw, 1.25rem);
+  --text-2xl:   clamp(1.25rem, 1.15rem + 0.50vw, 1.5rem);
+  --text-3xl:   clamp(1.5rem, 1.32rem + 0.89vw, 1.875rem);
+  --text-4xl:   clamp(1.875rem, 1.57rem + 1.52vw, 2.5rem);
+  --text-5xl:   clamp(2.25rem, 1.75rem + 2.50vw, 3.25rem);
+  --text-6xl:   clamp(2.75rem, 2.0rem + 3.75vw, 4.25rem);
+  --text-7xl:   clamp(3.25rem, 2.25rem + 5.00vw, 5.5rem);
+
+  --leading-none:   1;
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed:1.75;
+  --leading-loose:  2;
+
+  --tracking-tighter: -0.04em;
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.08em;
+  --tracking-widest:  0.14em;
+
+  /* ──────────────────────────────────────────────────────────
+     SPACING SCALE
+  ────────────────────────────────────────────────────────── */
+  --space-px:  1px;
+  --space-0:   0px;
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-5:   1.25rem;
+  --space-6:   1.5rem;
+  --space-7:   1.75rem;
+  --space-8:   2rem;
+  --space-9:   2.25rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-14:  3.5rem;
+  --space-16:  4rem;
+  --space-20:  5rem;
+  --space-24:  6rem;
+  --space-28:  7rem;
+  --space-32:  8rem;
+
+  --section-padding-y:     clamp(3.5rem, 2rem + 5vw, 6rem);
+  --section-padding-y-sm:  clamp(2rem, 1rem + 3vw, 3.5rem);
+
+  /* ──────────────────────────────────────────────────────────
+     BORDER RADIUS
+  ────────────────────────────────────────────────────────── */
+  --radius-none: 0px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-3xl:  32px;
+  --radius-full: 9999px;
+
+  --radius-btn:    var(--radius-md);
+  --radius-card:   var(--radius-xl);
+  --radius-badge:  var(--radius-full);
+  --radius-input:  var(--radius-md);
+
+  /* ──────────────────────────────────────────────────────────
+     SHADOWS
+  ────────────────────────────────────────────────────────── */
+  --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.06),
+                0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md:  0 1px 3px rgba(0, 0, 0, 0.06),
+                0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg:  0 2px 6px rgba(0, 0, 0, 0.06),
+                0 16px 40px rgba(0, 0, 0, 0.10);
+  --shadow-xl:  0 4px 12px rgba(0, 0, 0, 0.07),
+                0 24px 64px rgba(0, 0, 0, 0.12);
+  --shadow-2xl: 0 8px 24px rgba(0, 0, 0, 0.08),
+                0 40px 96px rgba(0, 0, 0, 0.14);
+
+  --shadow-primary:   0 4px 14px rgba(30, 85, 104, 0.25),
+                      0 2px 6px rgba(30, 85, 104, 0.15);
+  --shadow-accent:    0 4px 14px rgba(201, 168, 67, 0.35),
+                      0 2px 6px rgba(201, 168, 67, 0.20);
+  --shadow-secondary: 0 4px 14px rgba(22, 140, 189, 0.28),
+                      0 2px 6px rgba(22, 140, 189, 0.16);
+
+  --shadow-card-hover: 0 1px 3px rgba(0, 0, 0, 0.06),
+                       0 16px 40px rgba(30, 85, 104, 0.14),
+                       0 0 0 1px rgba(22, 140, 189, 0.12);
+
+  /* ──────────────────────────────────────────────────────────
+     TRANSITIONS
+  ────────────────────────────────────────────────────────── */
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   400ms;
+  --duration-slower: 600ms;
+
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --transition-fast:   var(--duration-fast) var(--ease-default);
+  --transition-base:   var(--duration-base) var(--ease-default);
+  --transition-slow:   var(--duration-slow) var(--ease-default);
+
+  /* ──────────────────────────────────────────────────────────
+     Z-INDEX SCALE
+  ────────────────────────────────────────────────────────── */
+  --z-below:   -1;
+  --z-base:    0;
+  --z-raised:  10;
+  --z-dropdown:100;
+  --z-sticky:  200;
+  --z-fixed:   300;
+  --z-overlay: 400;
+  --z-modal:   500;
+  --z-toast:   600;
+  --z-tooltip: 700;
+
+  /* ──────────────────────────────────────────────────────────
+     LAYOUT TOKENS
+  ────────────────────────────────────────────────────────── */
+  --container-sm:  640px;
+  --container-md:  768px;
+  --container-lg:  1024px;
+  --container-xl:  1200px;
+  --container-2xl: 1440px;
+
+  --container-px: clamp(1rem, 4vw, 2rem);
+  --nav-height: 72px;
+
+  --content-narrow:  680px;
+  --content-reading: 720px;
+  --content-wide:    960px;
+
+  --gap-grid:    clamp(1.25rem, 2vw, 2rem);
+  --gap-section: clamp(2rem, 4vw, 4rem);
+
+}
