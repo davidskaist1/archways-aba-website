@@ -1,0 +1,18 @@
+# CRM app — separate project, separate repo
+crm/
+
+# Chatbot server — will be added to site when complete
+chatbot-server.js
+js/chatbot.js
+css/chatbot.css
+.env.example
+package.json
+package-lock.json
+node_modules/
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
