@@ -2,9 +2,6 @@
   "name": "archways-aba-website",
   "version": "1.0.0",
   "description": "Archways ABA Website with AI Chatbot via Netlify Functions",
-  "dependencies": {
-    "@anthropic-ai/sdk": "latest"
-  },
   "engines": {
     "node": ">=18.0.0"
   }

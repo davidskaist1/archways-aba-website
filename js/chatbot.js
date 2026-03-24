@@ -192,15 +192,13 @@
 
     if (!greeted) {
       greeted = true;
-      // Show hardcoded greeting instantly — no API call needed
+      // Show greeting after a brief pause — no typing indicator before user has said anything
       setTimeout(() => {
         appendMessage('bot', GREETING);
         history.push({ role: 'assistant', content: GREETING });
-        setWaiting(false);
         const input = $('archways-chat-input');
-        if (input) input.focus();
-      }, 400);
-      showTyping();
+        if (input) { input.disabled = false; input.focus(); }
+      }, 350);
     } else {
       const input = $('archways-chat-input');
       if (input) input.focus();
