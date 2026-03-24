@@ -37,7 +37,8 @@
       "Bash(git --version)",
       "Bash(grep -l autism-journey.html C:/Users/dovid/.claude/Website/*.html C:/Users/dovid/.claude/Website/services/*.html)",
       "Bash(sed -i 's|<a href=\"\"contact\\\\.html\"\" role=\"\"menuitem\"\">Contact</a>|<a href=\"\"autism-journey.html\"\" role=\"\"menuitem\"\">Parent Guide</a>\\\\n      <a href=\"\"contact.html\"\" role=\"\"menuitem\"\">Contact</a>|g' \"$f\")",
-      "Read(//c/Users/dovid/.claire/Website/**)"
+      "Read(//c/Users/dovid/.claire/Website/**)",
+      "Bash(grep -l \"terms\\\\|Terms\" /c/Users/dovid/.claude/Website/*.html)"
     ]
   }
 }
