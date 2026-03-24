@@ -11,7 +11,7 @@
   const SUMMARY_URL = '/.netlify/functions/send-summary';
 
   // Hardcoded greeting — shows instantly, no API call on first open
-  const GREETING = "Hi there! 👋 I'm Maya, a care specialist at Archways ABA. Whether you're just starting to wonder about your child's development or you're ready to get started with ABA therapy — I'm here to help. What's on your mind today?";
+  const GREETING = "Hi there! 👋 I'm Maya, Archways ABA's AI assistant. I'm here to answer your questions and help connect your family with our team. Whether you're just starting to wonder about your child's development or you're ready to get started with ABA therapy — what's on your mind today?";
 
   // ── State ────────────────────────────────────────────────────────────
   let history    = []; // [{role:'user'|'assistant', content:'...'}]
@@ -195,7 +195,8 @@
       // Show greeting after a brief pause — no typing indicator before user has said anything
       setTimeout(() => {
         appendMessage('bot', GREETING);
-        history.push({ role: 'assistant', content: GREETING });
+        // NOTE: greeting is display-only — NOT added to history.
+        // Anthropic API requires the first message to be role:'user'.
         const input = $('archways-chat-input');
         if (input) { input.disabled = false; input.focus(); }
       }, 350);
