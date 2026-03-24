@@ -1,27 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 66" role="img" aria-label="Archways ABA logo mark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 62" role="img" aria-label="Archways ABA logo mark">
   <defs>
-    <!-- Main gradient: steel-silver at apex, deep navy at base — like stainless steel -->
-    <linearGradient id="gArch" x1="0.3" y1="0" x2="0.7" y2="1">
+    <!-- Steel-silver at apex fading to deep navy at base -->
+    <linearGradient id="gArch" x1="0.35" y1="0" x2="0.65" y2="1">
       <stop offset="0%"   stop-color="#C8DCEC"/>
-      <stop offset="22%"  stop-color="#8BB0C8"/>
+      <stop offset="20%"  stop-color="#8BB0C8"/>
       <stop offset="58%"  stop-color="#4A7A96"/>
       <stop offset="100%" stop-color="#1B3850"/>
     </linearGradient>
-    <!-- Inner-left face shine: bright highlight on the concave inner surface -->
-    <linearGradient id="gShine" x1="0" y1="0.2" x2="1" y2="0.8">
-      <stop offset="0%"   stop-color="rgba(215,240,255,0.60)"/>
-      <stop offset="100%" stop-color="rgba(215,240,255,0)"/>
+    <!-- Inner-left concave face: catches light like stainless steel -->
+    <linearGradient id="gShine" x1="0" y1="0.1" x2="1" y2="0.9">
+      <stop offset="0%"   stop-color="rgba(210,238,255,0.58)"/>
+      <stop offset="100%" stop-color="rgba(210,238,255,0)"/>
     </linearGradient>
   </defs>
 
-  <!-- Gateway Arch silhouette: catenary-tapered legs, wide at base, near-point at apex -->
-  <path d="M 4,66 C 5,34 21,2 28,2 C 35,2 51,34 52,66 L 44,66 C 43,38 30,7 28,7 C 26,7 13,38 12,66 Z"
+  <!--
+    True catenary shape:
+    - Legs are nearly VERTICAL at the base (control points directly above start)
+    - Curve sweeps inward only in the upper ~40% of the arch
+    - Wide base, near-point apex — matching the real Gateway Arch silhouette
+  -->
+  <path d="M 3,62 C 3,18 16,2 28,2 C 40,2 53,18 53,62 L 45,62 C 45,24 32,8 28,8 C 24,8 11,24 11,62 Z"
         fill="url(#gArch)"/>
 
-  <!-- Inner-left face highlight (the Arch catches light on its inner-left surface) -->
-  <path d="M 12,66 C 13,38 26,7 28,7 L 20,66 Z"
+  <!-- Highlight on inner-left concave surface -->
+  <path d="M 11,62 C 11,24 24,8 28,8 L 19,62 Z"
         fill="url(#gShine)"/>
 
-  <!-- Apex glow — the stainless steel tip catching sunlight -->
-  <ellipse cx="28" cy="3.5" rx="3.2" ry="1.8" fill="rgba(230,248,255,0.82)"/>
+  <!-- Apex glow — stainless steel catching the light at the top -->
+  <ellipse cx="28" cy="4" rx="3.5" ry="1.8" fill="rgba(228,246,255,0.82)"/>
 </svg>
