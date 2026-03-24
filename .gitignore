@@ -1,13 +1,12 @@
 # CRM app — separate project, separate repo
 crm/
 
-# Chatbot server — will be added to site when complete
+# Old standalone chatbot server (replaced by Netlify Functions)
 chatbot-server.js
-js/chatbot.js
-css/chatbot.css
-.env.example
-package.json
-package-lock.json
+.env
+.env.local
+
+# Node
 node_modules/
 
 # Claude Code local settings

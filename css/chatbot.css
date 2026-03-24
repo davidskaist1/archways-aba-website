@@ -1,0 +1,281 @@
+/* ============================================================
+   ARCHWAYS ABA — MAYA CHATBOT WIDGET
+   All selectors scoped to #archways-chat-* to avoid conflicts
+   ============================================================ */
+
+#archways-chat-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* ── Launch Button ─────────────────────────────────────────── */
+#archways-chat-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1B698C 0%, #0F3344 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px 12px 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 28px rgba(15,51,68,0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+#archways-chat-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 36px rgba(15,51,68,0.55); }
+#archways-chat-btn:focus-visible { outline: 3px solid #C9A843; outline-offset: 3px; }
+
+#archways-chat-btn .btn-icon {
+  width: 38px; height: 38px;
+  background: rgba(255,255,255,0.14);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+#archways-chat-btn .btn-text { display: flex; flex-direction: column; align-items: flex-start; }
+#archways-chat-btn .btn-name { font-weight: 700; font-size: 0.875rem; line-height: 1.25; }
+#archways-chat-btn .btn-sub  { font-size: 0.7rem; opacity: 0.75; line-height: 1.2; }
+
+/* Gold pulsing dot */
+#archways-chat-btn .chat-dot {
+  position: absolute; top: -4px; right: -4px;
+  width: 14px; height: 14px;
+  background: #E9BF28;
+  border-radius: 50%;
+  border: 2.5px solid #fff;
+  animation: archways-pulse 2.2s ease-in-out infinite;
+}
+@keyframes archways-pulse {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%       { transform: scale(1.25); opacity: 0.7; }
+}
+#archways-chat-widget.is-open .chat-dot { display: none; }
+
+/* ── Chat Window ───────────────────────────────────────────── */
+#archways-chat-window {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  right: 0;
+  width: 370px;
+  max-width: calc(100vw - 32px);
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 12px 60px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: archways-slideup 0.28s cubic-bezier(0.16,1,0.3,1);
+  max-height: 580px;
+}
+#archways-chat-window[hidden] { display: none !important; }
+
+@keyframes archways-slideup {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+#archways-chat-header {
+  background: linear-gradient(135deg, #0F3344 0%, #1B698C 100%);
+  padding: 14px 16px;
+  display: flex; align-items: center; gap: 11px;
+  flex-shrink: 0;
+}
+#archways-chat-header .hdr-avatar {
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.13);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+#archways-chat-header .hdr-info { flex: 1; min-width: 0; }
+#archways-chat-header .hdr-name {
+  color: #fff; font-weight: 700; font-size: 0.9rem; line-height: 1.3;
+}
+#archways-chat-header .hdr-status {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.7rem; color: rgba(255,255,255,0.7); margin-top: 2px;
+}
+#archways-chat-header .hdr-status-dot {
+  width: 7px; height: 7px;
+  background: #4ADE80; border-radius: 50%; flex-shrink: 0;
+  animation: archways-blink 2s ease infinite;
+}
+@keyframes archways-blink {
+  0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+}
+#archways-chat-close {
+  background: rgba(255,255,255,0.14); border: none; color: #fff;
+  border-radius: 50%; width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0; transition: background 0.15s;
+}
+#archways-chat-close:hover { background: rgba(255,255,255,0.28); }
+#archways-chat-close:focus-visible { outline: 2px solid #C9A843; }
+
+/* ── Progress Bar ──────────────────────────────────────────── */
+#archways-progress-bar {
+  background: #E2E8F0; height: 3px; flex-shrink: 0;
+}
+#archways-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #C9A843, #E9BF28);
+  width: 0%; transition: width 0.6s ease;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── Messages ──────────────────────────────────────────────── */
+#archways-chat-messages {
+  flex: 1; overflow-y: auto;
+  padding: 14px 12px;
+  display: flex; flex-direction: column; gap: 10px;
+  scroll-behavior: smooth;
+  min-height: 240px; max-height: 340px;
+  background: #F8FAFC;
+}
+#archways-chat-messages::-webkit-scrollbar { width: 4px; }
+#archways-chat-messages::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+
+/* Reuse existing aria-msg classes from other sessions */
+.aria-msg { display: flex; align-items: flex-end; gap: 8px; max-width: 88%; }
+@keyframes aria-msg-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+.aria-msg--bot  { align-self: flex-start; }
+.aria-msg--user { align-self: flex-end; flex-direction: row-reverse; }
+.aria-msg-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, #1E5568, #168CBD);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0; margin-bottom: 2px;
+}
+.aria-bubble {
+  padding: 10px 14px; border-radius: 18px;
+  font-size: 0.875rem; line-height: 1.55; word-wrap: break-word;
+}
+.aria-msg--bot  .aria-bubble {
+  background: #fff; color: #1E293B;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.aria-msg--user .aria-bubble {
+  background: linear-gradient(135deg, #1B698C, #0F3344);
+  color: #fff; border-bottom-right-radius: 4px;
+}
+
+/* ── Typing Dots ───────────────────────────────────────────── */
+.aria-typing {
+  display: flex; gap: 5px;
+  padding: 12px 16px;
+  background: #fff; border-radius: 18px; border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  align-self: flex-start;
+}
+.aria-typing span {
+  width: 7px; height: 7px;
+  background: #94A3B8; border-radius: 50%;
+  animation: aria-bounce 1.2s ease-in-out infinite;
+  display: block;
+}
+.aria-typing span:nth-child(2) { animation-delay: 0.18s; }
+.aria-typing span:nth-child(3) { animation-delay: 0.36s; }
+@keyframes aria-bounce {
+  0%, 80%, 100% { transform: translateY(0);   opacity: 0.5; }
+  40%            { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ── Ended Banner ──────────────────────────────────────────── */
+#archways-ended-banner {
+  padding: 11px 16px;
+  background: #F0FDF4;
+  border-top: 1px solid #86EFAC;
+  font-size: 0.8rem;
+  color: #166534;
+  text-align: center;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+#archways-ended-banner[hidden] { display: none; }
+#archways-ended-banner a { color: #166534; font-weight: 700; text-decoration: none; }
+
+/* ── Input Area ────────────────────────────────────────────── */
+#archways-chat-input-area {
+  padding: 10px 12px 8px;
+  border-top: 1px solid #E2E8F0;
+  background: #fff;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+#archways-input-row { display: flex; align-items: flex-end; gap: 8px; }
+
+#archways-chat-input {
+  flex: 1;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 22px;
+  padding: 9px 14px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: #1E293B;
+  resize: none;
+  max-height: 96px;
+  min-height: 38px;
+  line-height: 1.45;
+  background: #F8FAFC;
+  overflow-y: hidden;
+  transition: border-color 0.15s, background 0.15s;
+}
+#archways-chat-input:focus { outline: none; border-color: #1B698C; background: #fff; }
+#archways-chat-input::placeholder { color: #94A3B8; }
+#archways-chat-input:disabled { opacity: 0.5; cursor: not-allowed; }
+
+#archways-chat-send {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, #1B698C, #0F3344);
+  border: none; border-radius: 50%;
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0;
+  transition: transform 0.15s, opacity 0.15s;
+}
+#archways-chat-send:hover:not(:disabled) { transform: scale(1.08); }
+#archways-chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+#archways-chat-send:focus-visible { outline: 2px solid #C9A843; }
+
+#archways-end-btn {
+  display: block; width: 100%; margin-top: 7px;
+  padding: 6px;
+  background: none;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 9px;
+  font-family: inherit; font-size: 0.72rem; color: #94A3B8;
+  cursor: pointer; transition: border-color 0.15s, color 0.15s;
+}
+#archways-end-btn:hover { border-color: #CBD5E1; color: #64748B; }
+
+/* ── Mobile ────────────────────────────────────────────────── */
+@media (max-width: 430px) {
+  #archways-chat-widget { bottom: 16px; right: 14px; }
+
+  #archways-chat-window {
+    position: fixed;
+    bottom: 0; right: 0; left: 0;
+    width: 100vw; max-width: 100vw;
+    border-radius: 20px 20px 0 0;
+    max-height: 86vh;
+  }
+
+  #archways-chat-btn {
+    width: 58px; height: 58px;
+    border-radius: 50%; padding: 0; justify-content: center;
+  }
+  #archways-chat-btn .btn-text { display: none; }
+  #archways-chat-btn .btn-icon { background: none; }
+}
