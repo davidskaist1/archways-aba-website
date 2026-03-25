@@ -1977,10 +1977,6 @@ p {
   }
 }
 
-/* Hide announcement bar on all mobile/tablet sizes */
-@media (max-width: 900px) {
-  .announce-bar { display: none; }
-}
 
 /* Mobile nav */
 @media (max-width: 768px) {
@@ -2075,6 +2071,9 @@ p {
   transition: color var(--transition-fast);
 }
 .announce-bar a:hover { color: var(--gold-200); }
+@media (max-width: 900px) {
+  .announce-bar { display: none !important; }
+}
 .announce-bar__sep {
   margin: 0 0.75rem;
   opacity: 0.35;
