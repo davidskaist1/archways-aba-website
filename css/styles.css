@@ -1977,10 +1977,13 @@ p {
   }
 }
 
+/* Hide announcement bar on all mobile/tablet sizes */
+@media (max-width: 900px) {
+  .announce-bar { display: none; }
+}
+
 /* Mobile nav */
 @media (max-width: 768px) {
-  /* Hide announcement bar on mobile — fixed nav covers it */
-  .announce-bar { display: none; }
 
   .nav-links {
     display: none;
@@ -3537,6 +3540,12 @@ p {
 }
 /* Mobile: dropdown in mobile nav */
 @media (max-width: 900px) {
+  .nav-dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .nav-dropdown__menu {
     position: static;
     transform: none;
@@ -3547,12 +3556,13 @@ p {
     padding: var(--space-1) var(--space-2);
     margin: var(--space-1) 0 var(--space-2);
     display: none;
-    width: 100%;
+    width: 80%;
+    text-align: center;
   }
   .nav-dropdown__menu::before { display: none; }
   .nav-dropdown__toggle {
-    width: 100%;
-    justify-content: flex-start;
+    width: auto;
+    justify-content: center;
     padding: var(--space-3) var(--space-4);
     font-family: inherit;
     font-size: var(--text-base);
@@ -3561,12 +3571,14 @@ p {
     background: none;
     border: none;
     cursor: pointer;
-    text-align: left;
+    text-align: center;
   }
   .nav-dropdown__item {
+    display: block;
     padding: var(--space-2) var(--space-3);
     color: rgba(255,255,255,0.75);
     font-size: var(--text-sm);
+    text-align: center;
   }
   .nav-dropdown__item:hover {
     background: rgba(255,255,255,0.08);
