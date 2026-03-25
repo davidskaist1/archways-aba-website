@@ -58,6 +58,10 @@ exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers: cors, body: '' };
   if (event.httpMethod !== 'POST') return { statusCode: 405, headers: cors, body: '{"error":"Method not allowed"}' };
 
+  // TEMP DIAGNOSTIC — remove after confirming function works
+  const { _test } = JSON.parse(event.body || '{}');
+  if (_test) return { statusCode: 200, headers: cors, body: JSON.stringify({ reply: 'Function is alive! Key set: ' + !!process.env.ANTHROPIC_API_KEY }) };
+
   try {
     const { messages } = JSON.parse(event.body || '{}');
     if (!Array.isArray(messages) || messages.length === 0) {
