@@ -88,11 +88,24 @@ document.querySelectorAll('form[data-form]').forEach(form => {
     btn.textContent = 'Sending…';
 
     try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
+      let res;
+
+      if (form.dataset.form === 'intake') {
+        // Route intake form to Netlify function → Supabase CRM
+        const data = Object.fromEntries(new FormData(form).entries());
+        res = await fetch('/.netlify/functions/intake-to-crm', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+      } else {
+        // All other forms (referral, etc.) go straight to Formspree
+        res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' },
+        });
+      }
 
       if (res.ok) {
         form.reset();
