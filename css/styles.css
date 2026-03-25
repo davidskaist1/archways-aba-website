@@ -4332,6 +4332,13 @@ html, body {
   gap: var(--gap-section);
   align-items: center;
 }
+/* Prevent grid children from overflowing their cell */
+.contact-layout > *,
+.two-col-layout > * {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
 .contact-layout {
   gap: 4rem;
   align-items: start;
@@ -4345,6 +4352,12 @@ html, body {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+}
+
+/* Ensure all inputs/selects never exceed their container */
+input, select, textarea, button {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Grid sections single-column on mobile */
