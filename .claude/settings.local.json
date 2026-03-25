@@ -51,7 +51,11 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code} \\(time: %{time_total}s\\)\" -X GET \"https://lively-alfajores-80e32c.netlify.app/.netlify/functions/chat\")",
       "Bash(curl -s -w \"\\\\nHTTP: %{http_code} \\(time: %{time_total}s\\)\" -X POST \"https://lively-alfajores-80e32c.netlify.app/.netlify/functions/chat\" -H \"Content-Type: application/json\" -d '{\"\"_test\"\": true}')",
       "Bash(curl -s -w \"\\\\nHTTP: %{http_code} \\(time: %{time_total}s\\)\" -X POST \"https://lively-alfajores-80e32c.netlify.app/.netlify/functions/chat\" -H \"Content-Type: application/json\" -d '{\"\"messages\"\": [{\"\"role\"\": \"\"user\"\", \"\"content\"\": \"\"Hi, I have questions about ABA therapy\"\"}]}')",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(ls \"C:/Users/dovid/.claude/Website/\"*.html)",
+      "Bash(xargs sed:*)"
     ]
   }
 }
