@@ -381,6 +381,7 @@ p {
 ────────────────────────────────────────────────────────────── */
 .section-header {
   margin-bottom: var(--space-12);
+  text-align: center;
 }
 
 .section-header h2 {
@@ -391,6 +392,8 @@ p {
   font-size: var(--text-lg);
   max-width: 600px;
   color: var(--color-text-muted);
+  margin: 0 auto;
+  text-align: center;
 }
 
 .section-header.text-center p {
@@ -3962,6 +3965,7 @@ p {
   font-weight: var(--fw-semibold);
   color: var(--teal-800);
 }
+.req-star { color: #d0302f; margin-left: 2px; }
 .consult-form-group input,
 .consult-form-group select,
 .consult-form-group textarea {

@@ -402,20 +402,20 @@
       <p class="section-sub">Fill out the form below and a care coordinator will reach out within 24 hours — no cost, no obligation.</p>
     </div>
     <div class="consult-form-card">
-      <form action="https://formspree.io/f/mpqyvdya" method="POST" novalidate aria-label="Free consultation request form">
+      <form action="https://formspree.io/f/mpqyvdya" method="POST" id="consult-form" aria-label="Free consultation request form">
         <div class="consult-form-row">
           <div class="consult-form-group">
-            <label for="cf-name">Your Name</label>
+            <label for="cf-name">Your Name <span class="req-star" aria-hidden="true">*</span></label>
             <input type="text" id="cf-name" name="name" placeholder="Full Name" required autocomplete="name" />
           </div>
           <div class="consult-form-group">
-            <label for="cf-phone">Phone Number</label>
+            <label for="cf-phone">Phone Number <span class="req-star" aria-hidden="true">*</span></label>
             <input type="tel" id="cf-phone" name="phone" placeholder="(314) 474-0091" required autocomplete="tel" />
           </div>
         </div>
         <div class="consult-form-row">
           <div class="consult-form-group">
-            <label for="cf-email">Email Address</label>
+            <label for="cf-email">Email Address <span class="req-star" aria-hidden="true">*</span></label>
             <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
           </div>
           <div class="consult-form-group">
@@ -859,6 +859,31 @@
   window.ARIA_API_BASE = 'http://localhost:3001';
 </script>
 <script src="/js/chatbot.js" defer></script>
+<script>
+(function(){
+  var form = document.getElementById('consult-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e){
+    var valid = true;
+    form.querySelectorAll('[required]').forEach(function(field){
+      field.style.borderColor = '';
+      var err = field.parentNode.querySelector('.form-err');
+      if (err) err.remove();
+      if (!field.value.trim()){
+        valid = false;
+        field.style.borderColor = '#d0302f';
+        var msg = document.createElement('span');
+        msg.className = 'form-err';
+        msg.style.cssText = 'color:#d0302f;font-size:.8rem;display:block;margin-top:.25rem;';
+        msg.textContent = 'This field is required.';
+        field.parentNode.appendChild(msg);
+        if (valid === false && !form.querySelector('[required][style*="d0302f"]:first-of-type')) field.focus();
+      }
+    });
+    if (!valid) e.preventDefault();
+  });
+})();
+</script>
 
 </body>
 </html>
