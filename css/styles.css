@@ -4272,25 +4272,41 @@ body {
   .footer-social {
     justify-content: center;
   }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-logo,
+  a.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
   footer .footer-col,
   .site-footer .footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
   footer .footer-col ul,
   .site-footer .footer-col ul {
     text-align: center;
     align-items: center;
+    width: 100%;
   }
   footer .footer-col ul li,
   .site-footer .footer-col ul li {
     justify-content: center;
     text-align: center;
+    width: 100%;
   }
   .footer-heading {
     text-align: center;
-  }
-  .footer-logo {
-    justify-content: center;
+    width: 100%;
   }
 }
 
