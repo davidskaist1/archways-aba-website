@@ -3542,24 +3542,36 @@ p {
     transform: none;
     box-shadow: none;
     border: none;
-    border-radius: 0;
-    background: var(--teal-50);
-    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    background: rgba(255,255,255,0.06);
+    padding: var(--space-1) var(--space-2);
+    margin: var(--space-1) 0 var(--space-2);
     display: none;
+    width: 100%;
   }
   .nav-dropdown__menu::before { display: none; }
-  .nav-dropdown.is-open .nav-dropdown__menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-  }
   .nav-dropdown__toggle {
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: var(--space-3) var(--space-4);
+    font-family: inherit;
+    font-size: var(--text-base);
+    font-weight: var(--fw-medium);
+    color: rgba(255,255,255,0.85);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
   }
   .nav-dropdown__item {
     padding: var(--space-2) var(--space-3);
+    color: rgba(255,255,255,0.75);
+    font-size: var(--text-sm);
+  }
+  .nav-dropdown__item:hover {
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border-radius: var(--radius-sm);
   }
 }
 
