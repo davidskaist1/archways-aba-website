@@ -37,21 +37,21 @@ document.querySelectorAll('.nav-dropdown__toggle').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.stopPropagation();
     const dropdown = this.closest('.nav-dropdown');
-    const isOpen = dropdown.classList.contains('open');
+    const isOpen = dropdown.classList.contains('is-open');
     // Close all dropdowns
-    document.querySelectorAll('.nav-dropdown.open').forEach(d => {
-      d.classList.remove('open');
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(d => {
+      d.classList.remove('is-open');
       d.querySelector('.nav-dropdown__toggle').setAttribute('aria-expanded', 'false');
     });
     if (!isOpen) {
-      dropdown.classList.add('open');
+      dropdown.classList.add('is-open');
       this.setAttribute('aria-expanded', 'true');
     }
   });
 });
 document.addEventListener('click', () => {
-  document.querySelectorAll('.nav-dropdown.open').forEach(d => {
-    d.classList.remove('open');
+  document.querySelectorAll('.nav-dropdown.is-open').forEach(d => {
+    d.classList.remove('is-open');
     d.querySelector('.nav-dropdown__toggle').setAttribute('aria-expanded', 'false');
   });
 });
