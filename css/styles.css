@@ -218,6 +218,31 @@ p {
   border-radius: var(--radius-full);
 }
 
+/* Prevent active underline from applying to dropdown toggle buttons */
+.nav-dropdown__toggle.active,
+.nav-dropdown .nav-dropdown__toggle {
+  text-decoration: none;
+  border-bottom: none;
+}
+.nav-dropdown__toggle.active::after,
+.nav-dropdown .nav-dropdown__toggle::after {
+  display: none !important;
+  content: none !important;
+}
+/* Support .open class (alias for .is-open) */
+.nav-dropdown.open .nav-dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+@media (max-width: 900px) {
+  .nav-dropdown.open .nav-dropdown__menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .nav-links .btn { margin-left: var(--space-2); }
 
 .nav-toggle {

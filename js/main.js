@@ -32,6 +32,30 @@ if (navToggle && navLinks) {
   });
 }
 
+// ── Services dropdown (click to open) ─────────────────────────
+document.querySelectorAll('.nav-dropdown__toggle').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const dropdown = this.closest('.nav-dropdown');
+    const isOpen = dropdown.classList.contains('open');
+    // Close all dropdowns
+    document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+      d.classList.remove('open');
+      d.querySelector('.nav-dropdown__toggle').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      dropdown.classList.add('open');
+      this.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+document.addEventListener('click', () => {
+  document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+    d.classList.remove('open');
+    d.querySelector('.nav-dropdown__toggle').setAttribute('aria-expanded', 'false');
+  });
+});
+
 // ── Mark active nav link ───────────────────────────────────────
 (function markActiveLink() {
   const page = window.location.pathname.split('/').pop() || 'index.html';

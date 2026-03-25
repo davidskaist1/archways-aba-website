@@ -106,7 +106,6 @@
         <div class="nav-dropdown__menu">
           <a href="services/in-home-aba.html" class="nav-dropdown__item">In-Home ABA Therapy</a>
           <a href="services/center-based.html" class="nav-dropdown__item">Center-Based <span style="font-size:10px;background:#FAF0C9;color:#86671A;padding:1px 7px;border-radius:20px;margin-left:4px;font-weight:700;">Soon</span></a>
-          <a href="services/school-consultation.html" class="nav-dropdown__item">School Consultation</a>
           <a href="services/parent-training.html" class="nav-dropdown__item">Parent Training</a>
           <a href="services/fba.html" class="nav-dropdown__item">FBA Assessments</a>
           <a href="services/telehealth.html" class="nav-dropdown__item">Telehealth Services</a>
@@ -397,7 +396,6 @@
         action="https://formspree.io/f/xlgpqloq"
         method="POST"
         data-form="careers"
-        novalidate
       >
         <input type="hidden" name="_subject" value="New Career Application – Archways ABA" />
         <input type="hidden" name="_next" value="https://www.archwaysaba.com/careers.html" />
@@ -572,5 +570,29 @@
 <script src="js/main.js" defer></script>
   <script src="js/chatbot.js" defer></script>
 <script>document.querySelectorAll(".copyright-year").forEach(function(el){el.textContent=new Date().getFullYear();});</script>
+<script>
+(function(){
+  document.querySelectorAll('form').forEach(function(form){
+    form.addEventListener('submit', function(e){
+      var valid = true;
+      form.querySelectorAll('[required]').forEach(function(field){
+        field.style.borderColor = '';
+        var err = field.parentNode.querySelector('.form-err');
+        if (err) err.remove();
+        if (!field.value.trim()){
+          valid = false;
+          field.style.borderColor = '#d0302f';
+          var msg = document.createElement('span');
+          msg.className = 'form-err';
+          msg.style.cssText = 'color:#d0302f;font-size:.8rem;display:block;margin-top:.25rem;';
+          msg.textContent = 'This field is required.';
+          field.parentNode.appendChild(msg);
+        }
+      });
+      if (!valid) e.preventDefault();
+    });
+  });
+})();
+</script>
 </body>
 </html>
