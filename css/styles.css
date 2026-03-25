@@ -3449,16 +3449,14 @@ p {
   position: absolute;
   top: calc(100% + 8px);
   left: 50%;
-  transform: translateX(-50%) translateY(6px);
+  transform: translateX(-50%);
   background: var(--white);
   border: 1px solid var(--neutral-200);
   border-radius: var(--radius-2xl);
   box-shadow: 0 20px 60px rgba(7,79,87,0.15), 0 4px 16px rgba(7,79,87,0.08);
   padding: var(--space-3);
   min-width: 260px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+  display: none;
   z-index: 200;
   list-style: none;
 }

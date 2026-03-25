@@ -33,28 +33,38 @@ if (navToggle && navLinks) {
 }
 
 // ── Services dropdown (click to open) ─────────────────────────
-document.querySelectorAll('.nav-dropdown__toggle').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    const dropdown = this.closest('.nav-dropdown');
-    const isOpen = dropdown.classList.contains('is-open');
-    // Close all dropdowns
-    document.querySelectorAll('.nav-dropdown.is-open').forEach(d => {
-      d.classList.remove('is-open');
-      d.querySelector('.nav-dropdown__toggle').setAttribute('aria-expanded', 'false');
+(function initDropdowns() {
+  var toggles = document.querySelectorAll('.nav-dropdown__toggle');
+  toggles.forEach(function(btn) {
+    var menu = btn.parentElement.querySelector('.nav-dropdown__menu');
+    if (!menu) return;
+    // Start hidden
+    menu.style.display = 'none';
+
+    btn.onclick = function(e) {
+      e.stopPropagation();
+      var isOpen = menu.style.display === 'block';
+      // Close all
+      toggles.forEach(function(b) {
+        var m = b.parentElement.querySelector('.nav-dropdown__menu');
+        if (m) m.style.display = 'none';
+        b.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        menu.style.display = 'block';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    };
+  });
+
+  document.addEventListener('click', function() {
+    toggles.forEach(function(b) {
+      var m = b.parentElement.querySelector('.nav-dropdown__menu');
+      if (m) m.style.display = 'none';
+      b.setAttribute('aria-expanded', 'false');
     });
-    if (!isOpen) {
-      dropdown.classList.add('is-open');
-      this.setAttribute('aria-expanded', 'true');
-    }
   });
-});
-document.addEventListener('click', () => {
-  document.querySelectorAll('.nav-dropdown.is-open').forEach(d => {
-    d.classList.remove('is-open');
-    d.querySelector('.nav-dropdown__toggle').setAttribute('aria-expanded', 'false');
-  });
-});
+})();
 
 // ── Mark active nav link ───────────────────────────────────────
 (function markActiveLink() {
