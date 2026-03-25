@@ -4314,6 +4314,39 @@ body {
   }
 }
 
+/* ── Prevent horizontal overflow on all screens ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+.container {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Two-column layouts (contact, about, home) ── */
+.contact-layout,
+.two-col-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-section);
+  align-items: center;
+}
+.contact-layout {
+  gap: 4rem;
+  align-items: start;
+}
+.two-col-layout--wide {
+  gap: var(--space-16);
+}
+@media (max-width: 768px) {
+  .contact-layout,
+  .two-col-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
 /* Grid sections single-column on mobile */
 @media (max-width: 640px) {
   .grid-3,

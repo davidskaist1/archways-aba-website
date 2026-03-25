@@ -55,7 +55,17 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(ls \"C:/Users/dovid/.claude/Website/\"*.html)",
-      "Bash(xargs sed:*)"
+      "Bash(xargs sed:*)",
+      "Bash(sed -i 's/Services <svg width=\"\"16\"\" height=\"\"16\"\"><use href=\"\"#icon-chevron-down\"\"\\\\/><\\\\/svg>/Services/g' blog-what-is-fba.html blog-missouri-autism-resources.html blog-sleep-autism.html)",
+      "Bash(sed -i 's/Services <svg width=\"\"16\"\" height=\"\"16\"\"><use href=\"\"#icon-chevron-down\"\"\\\\/><\\\\/svg>/Services/g' blog-meltdowns-vs-tantrums.html)",
+      "Bash(sed -i 's/Services <svg width=\"\"14\"\" height=\"\"14\"\" aria-hidden=\"\"true\"\"><use href=\"\"#icon-chevron-down\"\"\\\\/><\\\\/svg>/Services/g' services/center-based.html services/in-home-aba.html services/parent-training.html services/school-consultation.html)",
+      "Bash(grep -l autism-journey C:/Users/dovid/.claude/Website/*.html)",
+      "Bash(grep -rL autism-journey C:/Users/dovid/.claude/Website/*.html)",
+      "Bash(echo -n \"$f main.js: \")",
+      "Read(//c/Users/dovid/.claude/Website/**)",
+      "Bash(grep -rn \"grid-template-columns.*1fr.*1fr\\\\|grid-template-columns.*repeat\" C:/Users/dovid/.claude/Website/*.html --include=\"*.html\")",
+      "Bash(sed -i 's/style=\"\"display:grid; grid-template-columns:1fr 1fr; gap:var\\(--gap-section\\); align-items:center;\"\"/class=\"\"two-col-layout\"\"/' C:/Users/dovid/.claude/Website/about.html)",
+      "Bash(sed -i 's/style=\"\"display:grid;grid-template-columns:1fr 1fr;gap:var\\(--space-16\\);align-items:center;\"\"/class=\"\"two-col-layout two-col-layout--wide\"\"/' C:/Users/dovid/.claude/Website/index.html)"
     ]
   }
 }
