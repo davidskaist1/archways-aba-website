@@ -1,5 +1,5 @@
 // ── Maya — Archways ABA Intake Chatbot ───────────────────────────────────────
-// Calls Google Gemini API directly via fetch (free tier available)
+// Calls Anthropic API directly via fetch (no SDK dependency)
 
 const SYSTEM_PROMPT = `You are Maya, Archways ABA's AI assistant. You are an AI — be transparent about this if asked. You help families learn about ABA therapy and connect them with the Archways intake team.
 
@@ -64,37 +64,33 @@ exports.handler = async (event) => {
       return { statusCode: 400, headers: cors, body: '{"error":"Invalid messages"}' };
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
-      console.error('GEMINI_API_KEY is not set');
+      console.error('ANTHROPIC_API_KEY is not set');
       return {
         statusCode: 500, headers: cors,
         body: JSON.stringify({ reply: "I'm not quite set up yet — please call us at (314) 474-0091!" }),
       };
     }
 
-    // Convert history to Gemini format (user → user, assistant → model)
-    const contents = messages.map(m => ({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: m.content }],
-    }));
-
-    const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-          contents,
-          generationConfig: { maxOutputTokens: 512 },
-        }),
-      }
-    );
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 512,
+        system: SYSTEM_PROMPT,
+        messages,
+      }),
+    });
 
     if (!res.ok) {
       const err = await res.text();
-      console.error('Gemini API error:', res.status, err);
+      console.error('Anthropic API error:', res.status, err);
       return {
         statusCode: 500, headers: cors,
         body: JSON.stringify({ reply: "I had a little trouble just now — please try again or call us at (314) 474-0091!" }),
@@ -102,8 +98,7 @@ exports.handler = async (event) => {
     }
 
     const data = await res.json();
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text
-      || "I'm not sure how to respond to that — please call us at (314) 474-0091!";
+    const reply = data.content?.[0]?.text || "I'm not sure how to respond to that — please call us at (314) 474-0091!";
 
     return { statusCode: 200, headers: cors, body: JSON.stringify({ reply }) };
 

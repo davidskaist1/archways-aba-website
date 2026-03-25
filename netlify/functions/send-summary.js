@@ -1,5 +1,5 @@
 // ── Send conversation summary to intake team via Formspree ───────────────────
-// Uses Google Gemini API directly via fetch (free tier)
+// Uses Anthropic API directly via fetch (no SDK dependency)
 
 exports.handler = async (event) => {
   const cors = {
@@ -21,20 +21,24 @@ exports.handler = async (event) => {
       .map(m => `${m.role === 'user' ? 'PARENT' : 'MAYA'}: ${m.content}`)
       .join('\n\n');
 
-    // Use Gemini to extract structured intake info
+    // Use Claude Haiku to extract structured intake info
     let extractedInfo = 'Could not extract info';
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.ANTHROPIC_API_KEY;
 
     if (apiKey) {
-      const extractRes = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{
-              role: 'user',
-              parts: [{ text: `From this chatbot conversation, extract the following. If not mentioned write "Not provided".
+      const extractRes = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+        },
+        body: JSON.stringify({
+          model: 'claude-haiku-4-5-20251001',
+          max_tokens: 600,
+          messages: [{
+            role: 'user',
+            content: `From this chatbot conversation, extract the following. If not mentioned write "Not provided".
 
 CONVERSATION:
 ${transcript}
@@ -49,16 +53,14 @@ Current Services:
 Insurance:
 Location in Missouri:
 Contact Info:
-Notes:` }],
-            }],
-            generationConfig: { maxOutputTokens: 600 },
-          }),
-        }
-      );
+Notes:`,
+          }],
+        }),
+      });
 
       if (extractRes.ok) {
         const extractData = await extractRes.json();
-        extractedInfo = extractData.candidates?.[0]?.content?.parts?.[0]?.text || extractedInfo;
+        extractedInfo = extractData.content?.[0]?.text || extractedInfo;
       }
     }
 
