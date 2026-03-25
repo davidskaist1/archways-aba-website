@@ -51,7 +51,7 @@
       <a href="index.html" role="menuitem">Home</a>
       <a href="about.html" role="menuitem">About Us</a>
       <div class="nav-dropdown" role="none">
-        <button class="nav-dropdown__toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">Services <svg width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-dropdown__toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">Services</button>
         <div class="nav-dropdown__menu">
           <a href="services/in-home-aba.html" class="nav-dropdown__item">In-Home ABA Therapy</a>
           <a href="services/center-based.html" class="nav-dropdown__item">Center-Based <span style="font-size:10px;background:#FAF0C9;color:#86671A;padding:1px 7px;border-radius:20px;margin-left:4px;font-weight:700;">Soon</span></a>
@@ -215,12 +215,13 @@
       </ul></div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2025 Archways ABA. All rights reserved.</span>
+      <span>&copy; <span class="copyright-year"></span> Archways ABA. All rights reserved.</span>
       <div class="footer-bottom__links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="sitemap.xml">Sitemap</a></div>
     </div>
   </div>
 </footer>
 <script src="js/main.js" defer></script>
   <script src="js/chatbot.js" defer></script>
+<script>document.querySelectorAll(".copyright-year").forEach(function(el){el.textContent=new Date().getFullYear();});</script>
 </body>
 </html>

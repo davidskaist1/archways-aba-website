@@ -2522,10 +2522,12 @@ p {
   justify-content: center;
   color: var(--teal-600);
 }
-.svc-card h3 {
+.svc-card h3,
+.svc-card .svc-card__title {
   font-size: var(--text-lg);
   font-weight: var(--fw-bold);
   color: var(--teal-800);
+  font-family: var(--font-sans);
   margin: 0;
 }
 .svc-card p {
@@ -2535,6 +2537,19 @@ p {
   margin: 0;
   flex: 1;
 }
+.svc-card a.svc-card__link,
+.svc-card a[href] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--teal-600);
+  text-decoration: none;
+  margin-top: auto;
+}
+.svc-card a.svc-card__link:hover,
+.svc-card a[href]:hover { color: var(--teal-800); text-decoration: underline; }
 
 /* ============================================================
    PROCESS STEPS — REDESIGNED
@@ -3138,6 +3153,7 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
+  padding: 1.25rem 1.5rem;
   padding: var(--space-5) 0;
   background: none;
   border: none;
@@ -3158,7 +3174,7 @@ p {
 .faq-question[aria-expanded="true"] { color: var(--teal-600); }
 .faq-question[aria-expanded="true"] svg { transform: rotate(180deg); }
 .faq-answer {
-  padding-bottom: var(--space-5);
+  padding: 0 1.5rem 1.25rem;
 }
 .faq-answer p {
   color: var(--color-text-muted);
@@ -3342,8 +3358,10 @@ p {
 }
 .insurance-pill--gold {
   color: var(--gold-700);
-  background: var(--gold-50);
-  border-color: var(--gold-300);
+  background: transparent;
+  border-color: transparent;
+  cursor: default;
+  font-style: italic;
 }
 .insurance-strip__logos {
   display: flex;
@@ -4119,5 +4137,77 @@ p {
   }
   .split-full__body {
     padding: var(--space-10) var(--space-6);
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE FIXES — Items 14–17
+   ============================================================ */
+
+/* Body overflow fix to prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+
+/* Free Parent Resource section mobile fix */
+@media (max-width: 768px) {
+  section[aria-labelledby="guide-feature-heading"],
+  section[aria-labelledby="guide-feature-heading"] > * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  section[aria-labelledby="guide-feature-heading"] .container > div {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-8) !important;
+  }
+}
+
+/* Footer mobile fix — stack columns, center text */
+@media (max-width: 768px) {
+  .site-footer .footer-grid,
+  footer .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-bottom__inner,
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+  .footer-social {
+    justify-content: center;
+  }
+  footer .footer-col ul,
+  .site-footer .footer-col ul {
+    text-align: center;
+  }
+}
+
+/* Grid sections single-column on mobile */
+@media (max-width: 640px) {
+  .grid-3,
+  .testi-grid,
+  .process-grid,
+  .svc-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Section header center alignment */
+.section-header {
+  text-align: center;
+}
+
+/* Hero text center on mobile */
+@media (max-width: 768px) {
+  .hero-split__content {
+    text-align: center;
+  }
+  .hero-split__cta-row {
+    justify-content: center;
+  }
+  .hero-split__trust {
+    align-items: center;
   }
 }

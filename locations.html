@@ -92,7 +92,7 @@
       <a href="about.html" role="menuitem">About Us</a>
       <div class="nav-dropdown" role="none">
         <button class="nav-dropdown__toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
-          Services <svg width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          Services
         </button>
         <div class="nav-dropdown__menu">
           <a href="services/in-home-aba.html" class="nav-dropdown__item">In-Home ABA Therapy</a>
@@ -184,8 +184,8 @@
           <svg><use href="#icon-building"/></svg>
         </div>
         <h3>Center-Based ABA</h3>
-        <p>Structured clinic environments with peer interaction, specialized learning materials, and a full clinical team. Centers located in key regions across Missouri.</p>
-        <div style="margin-top:var(--space-4); font-size:var(--text-sm); color:var(--color-secondary); font-weight:var(--fw-semibold);">Select locations</div>
+        <p>Structured clinic environments with peer interaction, specialized learning materials, and a full clinical team. Our first center is opening soon.</p>
+        <div style="margin-top:var(--space-4); font-size:var(--text-sm); color:var(--gold-700); font-weight:var(--fw-semibold);">Coming Soon</div>
       </div>
       <div class="card animate delay-3">
         <div class="card-icon" aria-hidden="true">
@@ -492,7 +492,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2025 Archways ABA. All rights reserved.</span>
+      <span>&copy; <span class="copyright-year"></span> Archways ABA. All rights reserved.</span>
       <div class="footer-bottom__links">
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Use</a>
@@ -504,5 +504,6 @@
 
 <script src="js/main.js" defer></script>
   <script src="js/chatbot.js" defer></script>
+<script>document.querySelectorAll(".copyright-year").forEach(function(el){el.textContent=new Date().getFullYear();});</script>
 </body>
 </html>

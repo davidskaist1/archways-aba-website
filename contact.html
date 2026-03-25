@@ -124,7 +124,7 @@
       <a href="about.html" role="menuitem">About Us</a>
       <div class="nav-dropdown" role="none">
         <button class="nav-dropdown__toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
-          Services <svg width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          Services
         </button>
         <div class="nav-dropdown__menu">
           <a href="services/in-home-aba.html" class="nav-dropdown__item">In-Home ABA Therapy</a>
@@ -244,9 +244,9 @@
               <div class="form-group">
                 <label for="f-child">
                   <svg width="14" height="14" aria-hidden="true" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-user"/></svg>
-                  Child's First Name *
+                  Child's First Name
                 </label>
-                <input type="text" id="f-child" name="child_name" required />
+                <input type="text" id="f-child" name="child_name" />
               </div>
             </div>
 
@@ -283,9 +283,9 @@
               <div class="form-group">
                 <label for="f-county">
                   <svg width="14" height="14" aria-hidden="true" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-map-pin"/></svg>
-                  Your County *
+                  Your County
                 </label>
-                <select id="f-county" name="county" required>
+                <select id="f-county" name="county">
                   <option value="">Select your county…</option>
                   <option>Adair</option><option>Andrew</option><option>Atchison</option>
                   <option>Audrain</option><option>Barry</option><option>Barton</option>
@@ -367,8 +367,8 @@
             </div>
 
             <div class="form-group">
-              <label for="f-message">Tell Us About Your Child &amp; What Brings You to Us *</label>
-              <textarea id="f-message" name="message" required placeholder="Share your child's age, any current challenges, goals you'd like to work on, and any questions you have for our team…"></textarea>
+              <label for="f-message">Tell Us About Your Child &amp; What Brings You to Us</label>
+              <textarea id="f-message" name="message" placeholder="Share your child's age, any current challenges, goals you'd like to work on, and any questions you have for our team…"></textarea>
             </div>
 
             <div class="form-group">
@@ -384,6 +384,9 @@
                 <option>Other</option>
               </select>
             </div>
+
+            <!-- Honeypot -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
             <!-- Honeypot -->
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
@@ -512,9 +515,9 @@
           <div class="form-group">
             <label for="r-practice">
               <svg width="14" height="14" aria-hidden="true" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-users"/></svg>
-              Practice / Organization *
+              Practice / Organization
             </label>
-            <input type="text" id="r-practice" name="practice" required />
+            <input type="text" id="r-practice" name="practice" />
           </div>
         </div>
 
@@ -539,13 +542,13 @@
           <div class="form-group">
             <label for="r-pat-name">
               <svg width="14" height="14" aria-hidden="true" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-user"/></svg>
-              Patient Name *
+              Patient Name
             </label>
-            <input type="text" id="r-pat-name" name="patient_name" required />
+            <input type="text" id="r-pat-name" name="patient_name" />
           </div>
           <div class="form-group">
-            <label for="r-pat-dob">Patient Date of Birth *</label>
-            <input type="date" id="r-pat-dob" name="patient_dob" required />
+            <label for="r-pat-dob">Patient Date of Birth</label>
+            <input type="date" id="r-pat-dob" name="patient_dob" />
           </div>
         </div>
 
@@ -553,16 +556,16 @@
           <div class="form-group">
             <label for="r-diagnosis">
               <svg width="14" height="14" aria-hidden="true" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-activity"/></svg>
-              Diagnosis / ICD-10 Code *
+              Diagnosis / ICD-10 Code
             </label>
-            <input type="text" id="r-diagnosis" name="diagnosis" required placeholder="e.g. F84.0 – Autism Spectrum Disorder" />
+            <input type="text" id="r-diagnosis" name="diagnosis" placeholder="e.g. F84.0 – Autism Spectrum Disorder" />
           </div>
           <div class="form-group">
             <label for="r-county">
               <svg width="14" height="14" aria-hidden="true" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-map-pin"/></svg>
-              Patient's County *
+              Patient's County
             </label>
-            <input type="text" id="r-county" name="patient_county" required placeholder="e.g. Jackson County" />
+            <input type="text" id="r-county" name="patient_county" placeholder="e.g. Jackson County" />
           </div>
         </div>
 
@@ -687,7 +690,7 @@
 
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2025 Archways ABA. All rights reserved.</span>
+      <span>&copy; <span class="copyright-year"></span> Archways ABA. All rights reserved.</span>
       <div style="display:flex; gap:1.25rem;">
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Use</a>
@@ -698,5 +701,6 @@
 
 <script src="js/main.js" defer></script>
   <script src="js/chatbot.js" defer></script>
+<script>document.querySelectorAll(".copyright-year").forEach(function(el){el.textContent=new Date().getFullYear();});</script>
 </body>
 </html>

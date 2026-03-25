@@ -248,12 +248,12 @@
       <div><h4>Services</h4><ul><li><a href="in-home-aba.html">In-Home ABA</a></li><li><a href="center-based.html">Center-Based ABA</a></li><li><a href="school-consultation.html">School Consultation</a></li><li><a href="parent-training.html">Parent Training</a></li><li><a href="fba.html">FBA Assessments</a></li><li><a href="telehealth.html">Telehealth</a></li></ul></div>
       <div><h4>Contact</h4><ul class="footer-contact"><li><svg width="16" height="16"><use href="#icon-phone"/></svg><a href="tel:+13144740091">(314) 474-0091</a></li><li><svg width="16" height="16"><use href="#icon-mail"/></svg><a href="mailto:info@archwaysaba.com">info@archwaysaba.com</a></li><li><svg width="16" height="16"><use href="#icon-map-pin"/></svg><span>Serving all of Missouri</span></li></ul></div>
     </div>
-    <div class="footer-bottom"><span>&copy; <span class="year">2025</span> Archways ABA. All rights reserved.</span><div class="footer-bottom__links"><a href="../privacy.html">Privacy Policy</a><a href="../sitemap.xml">Sitemap</a></div></div>
+    <div class="footer-bottom"><span>&copy; <span class="copyright-year"></span> Archways ABA. All rights reserved.</span><div class="footer-bottom__links"><a href="../privacy.html">Privacy Policy</a><a href="../sitemap.xml">Sitemap</a></div></div>
   </div>
 </footer>
 <script src="../js/main.js" defer></script>
 <script>
-  document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+  document.querySelectorAll('.year,.copyright-year').forEach(el => el.textContent = new Date().getFullYear());
   const toggle = document.getElementById('servicesToggle');
   const dropdown = document.getElementById('servicesDropdown');
   if(toggle && dropdown){

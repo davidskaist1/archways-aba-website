@@ -101,7 +101,7 @@
       <a href="about.html" role="menuitem">About Us</a>
       <div class="nav-dropdown" role="none">
         <button class="nav-dropdown__toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
-          Services <svg width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          Services
         </button>
         <div class="nav-dropdown__menu">
           <a href="services/in-home-aba.html" class="nav-dropdown__item">In-Home ABA Therapy</a>
@@ -425,8 +425,8 @@
         </div>
 
         <div class="form-group">
-          <label for="c-position">Position Applying For <span aria-hidden="true">*</span></label>
-          <select id="c-position" name="position" required>
+          <label for="c-position">Position Applying For</label>
+          <select id="c-position" name="position">
             <option value="">Select a position…</option>
             <option>Board Certified Behavior Analyst (BCBA)</option>
             <option>BCBA – Supervisor</option>
@@ -438,8 +438,8 @@
         </div>
 
         <div class="form-group">
-          <label for="c-region">Preferred Region in Missouri <span aria-hidden="true">*</span></label>
-          <select id="c-region" name="region" required>
+          <label for="c-region">Preferred Region in Missouri</label>
+          <select id="c-region" name="region">
             <option value="">Select a region…</option>
             <option>Kansas City Metro</option>
             <option>St. Louis Metro</option>
@@ -470,8 +470,8 @@
         </div>
 
         <div class="form-group">
-          <label for="c-message">Tell Us About Yourself <span aria-hidden="true">*</span></label>
-          <textarea id="c-message" name="message" required placeholder="Share your background, why you're interested in joining Archways ABA, and any questions you have…"></textarea>
+          <label for="c-message">Tell Us About Yourself</label>
+          <textarea id="c-message" name="message" placeholder="Share your background, why you're interested in joining Archways ABA, and any questions you have…"></textarea>
         </div>
 
         <div class="form-group">
@@ -559,7 +559,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2025 Archways ABA. All rights reserved.</span>
+      <span>&copy; <span class="copyright-year"></span> Archways ABA. All rights reserved.</span>
       <div class="footer-bottom__links">
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Use</a>
@@ -571,5 +571,6 @@
 
 <script src="js/main.js" defer></script>
   <script src="js/chatbot.js" defer></script>
+<script>document.querySelectorAll(".copyright-year").forEach(function(el){el.textContent=new Date().getFullYear();});</script>
 </body>
 </html>

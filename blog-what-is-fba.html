@@ -342,12 +342,13 @@
   </div>
   <div class="footer-bottom">
     <div class="container">
-      <p>&copy; 2025 Archways ABA. All rights reserved.</p>
+      <p>&copy; <span class="copyright-year"></span> Archways ABA. All rights reserved.</p>
     </div>
   </div>
 </footer>
 
 <script src="js/main.js" defer></script>
   <script src="js/chatbot.js" defer></script>
+<script>document.querySelectorAll(".copyright-year").forEach(function(el){el.textContent=new Date().getFullYear();});</script>
 </body>
 </html>
