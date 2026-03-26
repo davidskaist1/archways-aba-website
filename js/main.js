@@ -89,39 +89,12 @@ document.querySelectorAll('form[data-form]').forEach(form => {
     btn.textContent = 'Sending…';
 
     try {
-      let res;
-
-      if (form.dataset.form === 'intake') {
-        // Contact page intake form → Netlify function → Supabase CRM
-        const data = Object.fromEntries(new FormData(form).entries());
-        res = await fetch('/.netlify/functions/intake-to-crm', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
-      } else if (form.dataset.form === 'consult') {
-        // Homepage consultation form → Netlify function → Supabase CRM
-        const raw = Object.fromEntries(new FormData(form).entries());
-        res = await fetch('/.netlify/functions/intake-to-crm', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            parent_name: raw.name,
-            phone: raw.phone,
-            email: raw.email,
-            county: raw.county,
-            message: raw.message,
-            referral_source: 'website_homepage',
-          }),
-        });
-      } else {
-        // All other forms (referral, etc.) go straight to Formspree
-        res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' },
-        });
-      }
+      // All forms submit to Formspree via fetch — user never leaves the page
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' },
+      });
 
       if (res.ok) {
         form.reset();
@@ -130,12 +103,12 @@ document.querySelectorAll('form[data-form]').forEach(form => {
           successEl.style.display = 'block';
           successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
-        showToast('✓ Message sent! We\'ll be in touch shortly.');
+        showToast('✓ Sent! We\'ll be in touch within 24 hours.');
       } else {
         throw new Error('Network response was not ok');
       }
     } catch (err) {
-      showToast('Something went wrong. Please email us directly.');
+      showToast('Something went wrong. Please call us at (314) 474-0091.');
     } finally {
       btn.disabled = false;
       btn.textContent = originalText;
