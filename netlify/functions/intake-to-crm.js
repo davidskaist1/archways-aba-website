@@ -76,7 +76,6 @@ exports.handler = async (event) => {
           status: 'inquiry',
           primary_stage: 'new_inquiry',
           active_stages: ['new_inquiry'],
-          is_spam: false,
           intake_form_source: 'Website Form',
           state: 'MO',
         }),
