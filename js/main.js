@@ -92,12 +92,27 @@ document.querySelectorAll('form[data-form]').forEach(form => {
       let res;
 
       if (form.dataset.form === 'intake') {
-        // Route intake form to Netlify function → Supabase CRM
+        // Contact page intake form → Netlify function → Supabase CRM
         const data = Object.fromEntries(new FormData(form).entries());
         res = await fetch('/.netlify/functions/intake-to-crm', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
+        });
+      } else if (form.dataset.form === 'consult') {
+        // Homepage consultation form → Netlify function → Supabase CRM
+        const raw = Object.fromEntries(new FormData(form).entries());
+        res = await fetch('/.netlify/functions/intake-to-crm', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            parent_name: raw.name,
+            phone: raw.phone,
+            email: raw.email,
+            county: raw.county,
+            message: raw.message,
+            referral_source: 'website_homepage',
+          }),
         });
       } else {
         // All other forms (referral, etc.) go straight to Formspree
