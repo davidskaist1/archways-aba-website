@@ -52,7 +52,7 @@ exports.handler = async (event) => {
 
     // 1. Insert into Supabase
     if (SUPABASE_URL && SUPABASE_SERVICE_KEY) {
-      await fetch(`${SUPABASE_URL}/rest/v1/clients`, {
+      const sbRes = await fetch(`${SUPABASE_URL}/rest/v1/clients`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,10 +76,19 @@ exports.handler = async (event) => {
           status: 'inquiry',
           primary_stage: 'new_inquiry',
           active_stages: ['new_inquiry'],
+          is_spam: false,
           intake_form_source: 'Website Form',
           state: 'MO',
         }),
       })
+      if (!sbRes.ok) {
+        const errText = await sbRes.text()
+        console.error('Supabase insert failed:', sbRes.status, errText)
+      } else {
+        console.log('Supabase insert success')
+      }
+    } else {
+      console.error('Missing env vars — SUPABASE_URL:', !!SUPABASE_URL, 'SUPABASE_SERVICE_KEY:', !!SUPABASE_SERVICE_KEY)
     }
 
     // 2. Forward to Formspree for email notification
