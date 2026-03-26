@@ -91,8 +91,8 @@ document.querySelectorAll('form[data-form]').forEach(form => {
     try {
       let res;
 
-      if (form.dataset.form === 'intake') {
-        // Full intake form on contact page → Netlify function → Supabase CRM
+      if (form.dataset.form === 'contact' || form.dataset.form === 'intake') {
+        // Contact page intake form → Netlify function → Supabase CRM
         const data = Object.fromEntries(new FormData(form).entries());
         res = await fetch('/.netlify/functions/intake-to-crm', {
           method: 'POST',
@@ -115,7 +115,7 @@ document.querySelectorAll('form[data-form]').forEach(form => {
           }),
         });
       } else {
-        // All other forms go straight to Formspree
+        // All other forms (referral etc.) go straight to Formspree
         res = await fetch(form.action, {
           method: 'POST',
           body: new FormData(form),
