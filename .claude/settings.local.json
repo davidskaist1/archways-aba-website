@@ -65,7 +65,10 @@
       "Read(//c/Users/dovid/.claude/Website/**)",
       "Bash(grep -rn \"grid-template-columns.*1fr.*1fr\\\\|grid-template-columns.*repeat\" C:/Users/dovid/.claude/Website/*.html --include=\"*.html\")",
       "Bash(sed -i 's/style=\"\"display:grid; grid-template-columns:1fr 1fr; gap:var\\(--gap-section\\); align-items:center;\"\"/class=\"\"two-col-layout\"\"/' C:/Users/dovid/.claude/Website/about.html)",
-      "Bash(sed -i 's/style=\"\"display:grid;grid-template-columns:1fr 1fr;gap:var\\(--space-16\\);align-items:center;\"\"/class=\"\"two-col-layout two-col-layout--wide\"\"/' C:/Users/dovid/.claude/Website/index.html)"
+      "Bash(sed -i 's/style=\"\"display:grid;grid-template-columns:1fr 1fr;gap:var\\(--space-16\\);align-items:center;\"\"/class=\"\"two-col-layout two-col-layout--wide\"\"/' C:/Users/dovid/.claude/Website/index.html)",
+      "Bash(dir \"C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM\\\\src\" /s /b)",
+      "Bash(node -e \":*)",
+      "Bash(find C:/Users/dovid/.claude/ArchwaysCRM/src -name *.tsx -o -name *.ts)"
     ]
   }
 }

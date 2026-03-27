@@ -51,7 +51,9 @@
     container.innerHTML = `
       <button id="archways-chat-btn" aria-label="Chat with Maya, our intake specialist" aria-expanded="false" aria-controls="archways-chat-window">
         <span class="chat-dot" aria-hidden="true"></span>
-        <div class="btn-icon">${archSvg}</div>
+        <div class="btn-icon">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&q=80" alt="Maya" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+        </div>
         <div class="btn-text">
           <span class="btn-name">Chat with Maya</span>
           <span class="btn-sub">Usually replies instantly</span>
@@ -61,7 +63,9 @@
       <div id="archways-chat-window" role="dialog" aria-labelledby="archways-chat-name" aria-modal="false" hidden>
 
         <div id="archways-chat-header">
-          <div class="hdr-avatar">${archSvg}</div>
+          <div class="hdr-avatar">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&q=80" alt="Maya" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+          </div>
           <div class="hdr-info">
             <div class="hdr-name" id="archways-chat-name">Maya · Archways ABA</div>
             <div class="hdr-status">
