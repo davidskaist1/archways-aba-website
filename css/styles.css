@@ -230,7 +230,9 @@ p {
   content: none !important;
 }
 /* Support .open class (alias for .is-open) */
-.nav-dropdown.open .nav-dropdown__menu {
+.nav-dropdown.open .nav-dropdown__menu,
+.nav-dropdown.is-open .nav-dropdown__menu {
+  display: block;
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
