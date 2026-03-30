@@ -68,7 +68,19 @@
       "Bash(sed -i 's/style=\"\"display:grid;grid-template-columns:1fr 1fr;gap:var\\(--space-16\\);align-items:center;\"\"/class=\"\"two-col-layout two-col-layout--wide\"\"/' C:/Users/dovid/.claude/Website/index.html)",
       "Bash(dir \"C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM\\\\src\" /s /b)",
       "Bash(node -e \":*)",
-      "Bash(find C:/Users/dovid/.claude/ArchwaysCRM/src -name *.tsx -o -name *.ts)"
+      "Bash(find C:/Users/dovid/.claude/ArchwaysCRM/src -name *.tsx -o -name *.ts)",
+      "Read(//c/Users/dovid/.claude/ImpulseDefender/**)",
+      "Bash(gh repo:*)",
+      "Bash(where gh:*)",
+      "Read(//c/Users/dovid/.claude/ArchwaysCRM/**)",
+      "Bash(npm install:*)",
+      "Bash(zip -r ../ImpulseDefender.zip . -x \"*.svg\" \"*.git*\")",
+      "Bash(powershell.exe -Command \"Compress-Archive -Path ''.\\\\*'' -DestinationPath ''..\\\\ImpulseDefender.zip'' -Force\")",
+      "Bash(powershell.exe -Command \"Remove-Item ''..\\\\ImpulseDefender.zip'' -ErrorAction SilentlyContinue; Compress-Archive -Path ''.\\\\*'' -DestinationPath ''..\\\\ImpulseDefender.zip'' -Force\")",
+      "Bash(node gen-screenshot.js)",
+      "Bash(node -e \"const fs=require\\(''fs''\\);const b=fs.readFileSync\\(''C:/Users/dovid/.claude/ImpulseDefender/promo/screenshot.png''\\);console.log\\(''Size:'',b.length\\);console.log\\(''PNG sig:'',b.slice\\(0,8\\).toString\\(''hex''\\)\\);console.log\\(''IHDR width:'',b.readUInt32BE\\(16\\),''height:'',b.readUInt32BE\\(20\\)\\);console.log\\(''Bit depth:'',b[24],''Color type:'',b[25]\\);\")",
+      "Bash(node gen-small-promo.js)",
+      "Bash(node gen-marquee.js)"
     ]
   }
 }
