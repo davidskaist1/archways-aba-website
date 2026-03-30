@@ -84,7 +84,7 @@
 
         <div id="archways-ended-banner" role="status" hidden>
           ✅ Our team will be in touch within 1 business day!<br>
-          Need immediate help? <a href="tel:+13144740091">(314) 474-0091</a>
+          Need immediate help? <a href="tel:+13146682866">(314) 668-2866</a>
         </div>
 
         <div id="archways-chat-input-area">
@@ -250,7 +250,7 @@
       const data = await res.json();
       removeTyping();
 
-      const reply = data.reply || "I'm sorry, I had trouble connecting. Please try again or call us at (314) 474-0091.";
+      const reply = data.reply || "I'm sorry, I had trouble connecting. Please try again or call us at (314) 668-2866.";
       appendMessage('bot', reply);
       history.push({ role: 'assistant', content: reply });
 
@@ -261,7 +261,7 @@
 
     } catch (err) {
       removeTyping();
-      const errMsg = "I had trouble connecting just now. Please try again, or call us directly at (314) 474-0091!";
+      const errMsg = "I had trouble connecting just now. Please try again, or call us directly at (314) 668-2866!";
       appendMessage('bot', errMsg);
       history.push({ role: 'assistant', content: errMsg });
     }
@@ -275,7 +275,7 @@
     isEnded = true;
 
     if (!auto) {
-      appendMessage('bot', "Thank you so much for chatting with me! I'm sending your information to our intake team right now. Someone will reach out within 1 business day. You can also call us anytime at (314) 474-0091. Take care! 💙");
+      appendMessage('bot', "Thank you so much for chatting with me! I'm sending your information to our intake team right now. Someone will reach out within 1 business day. You can also call us anytime at (314) 668-2866. Take care! 💙");
     }
 
     // Disable input

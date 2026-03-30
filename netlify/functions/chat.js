@@ -38,7 +38,7 @@ ABOUT ARCHWAYS ABA:
 - Services: In-Home ABA Therapy, Center-Based Therapy (opening soon), School Consultation, Parent Training, Functional Behavior Assessments (FBA), Telehealth
 - Accepts Missouri Medicaid (MO HealthNet) and most major private insurance plans
 - Serving families throughout the entire state of Missouri
-- Free consultations available — (314) 474-0091
+- Free consultations available — (314) 668-2866
 - Clinical team: Board Certified Behavior Analysts (BCBAs) and Registered Behavior Technicians (RBTs)
 - Getting started: free consultation → insurance verification → assessment → individualized treatment plan
 
@@ -84,7 +84,7 @@ exports.handler = async (event) => {
       console.error('ANTHROPIC_API_KEY is not set');
       return {
         statusCode: 500, headers: cors,
-        body: JSON.stringify({ reply: "I'm not quite set up yet — please call us at (314) 474-0091!" }),
+        body: JSON.stringify({ reply: "I'm not quite set up yet — please call us at (314) 668-2866!" }),
       };
     }
 
@@ -108,12 +108,12 @@ exports.handler = async (event) => {
       console.error('Anthropic API error:', res.status, err);
       return {
         statusCode: 500, headers: cors,
-        body: JSON.stringify({ reply: "I had a little trouble just now — please try again or call us at (314) 474-0091!" }),
+        body: JSON.stringify({ reply: "I had a little trouble just now — please try again or call us at (314) 668-2866!" }),
       };
     }
 
     const data = await res.json();
-    const reply = data.content?.[0]?.text || "I'm not sure how to respond to that — please call us at (314) 474-0091!";
+    const reply = data.content?.[0]?.text || "I'm not sure how to respond to that — please call us at (314) 668-2866!";
 
     return { statusCode: 200, headers: cors, body: JSON.stringify({ reply }) };
 
@@ -121,7 +121,7 @@ exports.handler = async (event) => {
     console.error('Chat function error:', err);
     return {
       statusCode: 500, headers: cors,
-      body: JSON.stringify({ reply: "I had a little trouble just now — please try again or call us at (314) 474-0091!" }),
+      body: JSON.stringify({ reply: "I had a little trouble just now — please try again or call us at (314) 668-2866!" }),
     };
   }
 };
