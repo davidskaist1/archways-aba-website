@@ -80,7 +80,24 @@
       "Bash(node gen-screenshot.js)",
       "Bash(node -e \"const fs=require\\(''fs''\\);const b=fs.readFileSync\\(''C:/Users/dovid/.claude/ImpulseDefender/promo/screenshot.png''\\);console.log\\(''Size:'',b.length\\);console.log\\(''PNG sig:'',b.slice\\(0,8\\).toString\\(''hex''\\)\\);console.log\\(''IHDR width:'',b.readUInt32BE\\(16\\),''height:'',b.readUInt32BE\\(20\\)\\);console.log\\(''Bit depth:'',b[24],''Color type:'',b[25]\\);\")",
       "Bash(node gen-small-promo.js)",
-      "Bash(node gen-marquee.js)"
+      "Bash(node gen-marquee.js)",
+      "WebSearch",
+      "Bash(npx tsc:*)",
+      "Bash(cmd /c \"cd C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM && npx tsc --noEmit 2>&1\")",
+      "Bash(cmd /c \"cd /d C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM && npx tsc --noEmit 2>&1\")",
+      "Bash(cmd /c \"cd /d C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM && npm run build 2>&1\")",
+      "Bash(powershell -Command \"Set-Location 'C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM'; npm run build 2>&1\")",
+      "Bash(powershell -Command \"Get-Content 'C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM\\\\src\\\\pages\\\\Onboarding.tsx' | Select-Object -First 5\")",
+      "Bash(powershell -Command \"Get-Content 'C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM\\\\src\\\\pages\\\\Onboarding.tsx' | Select-Object -First 10\")",
+      "Bash(powershell -Command \"Select-String -Path 'C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM\\\\src\\\\pages\\\\Onboarding.tsx' -Pattern 'Form Templates|forms tab|Edit|useNavigate' | Select-Object -First 10\")",
+      "Bash(powershell -Command \"Select-String -Path 'C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM\\\\src\\\\pages\\\\Onboarding.tsx' -Pattern 'export default|const \\\\[tab' | Select-Object -First 5\")",
+      "Bash(powershell -Command \"Set-Location 'C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM'; git add src/pages/OnboardingFormBuilder.tsx src/pages/Onboarding.tsx src/App.tsx; git commit -m 'Add in-app form builder UI with field editor and preview'; git push origin main\")",
+      "Bash(powershell -Command \"Set-Location 'C:\\\\Users\\\\dovid\\\\.claude\\\\ArchwaysCRM'; git add src/components/layout/Sidebar.tsx; git commit -m 'Fix Switch to Clinical URL to land on /clinical directly'; git push origin main\")",
+      "WebFetch(domain:archwaysaba.com)",
+      "WebFetch(domain:supabase.com)",
+      "WebFetch(domain:www.netlify.com)",
+      "WebFetch(domain:resend.com)",
+      "Bash(grep -rn \"sms_consent\" /c/Users/dovid/.claude/Website/aba-therapy*.html)"
     ]
   }
 }
