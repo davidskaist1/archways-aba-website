@@ -97,7 +97,16 @@
       "WebFetch(domain:supabase.com)",
       "WebFetch(domain:www.netlify.com)",
       "WebFetch(domain:resend.com)",
-      "Bash(grep -rn \"sms_consent\" /c/Users/dovid/.claude/Website/aba-therapy*.html)"
+      "Bash(grep -rn \"sms_consent\" /c/Users/dovid/.claude/Website/aba-therapy*.html)",
+      "WebFetch(domain:centralreach.com)",
+      "WebFetch(domain:partners-api.centralreach.com)",
+      "Bash(git rm:*)",
+      "Bash(rm -rf /c/Users/dovid/.claude/Website/archways-billing/.git)",
+      "Bash(rm -rf /c/Users/dovid/.claude/Website/archways-billing/css /c/Users/dovid/.claude/Website/archways-billing/js /c/Users/dovid/.claude/Website/archways-billing/netlify)",
+      "Bash(rm -f /c/Users/dovid/.claude/Website/archways-billing/*.html /c/Users/dovid/.claude/Website/archways-billing/*.sql /c/Users/dovid/.claude/Website/archways-billing/*.toml /c/Users/dovid/.claude/Website/archways-billing/*.js /c/Users/dovid/.claude/Website/archways-billing/.gitignore)",
+      "Read(//c/Users/dovid/archways-billing/**)",
+      "Bash(grep -l 'src=\"config.js\"' *.html)",
+      "Bash(grep -c 'netlify/functions/config' *.html)"
     ]
   }
 }
