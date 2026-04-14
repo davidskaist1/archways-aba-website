@@ -313,6 +313,15 @@
     const fill = $('archways-progress-fill');
     if (fill) fill.style.width = '100%';
 
+    // Fire GA4 conversion event for chatbot lead
+    if (typeof gtag === 'function') {
+      gtag('event', 'chatbot_lead', {
+        event_category: 'conversion',
+        event_label: reason,
+      });
+      gtag('event', 'generate_lead', { event_category: 'conversion' });
+    }
+
     // Send summary + transcript to intake team — only if there's something to send
     if (history.length === 0) return;
     try {

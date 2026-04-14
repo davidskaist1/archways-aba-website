@@ -131,6 +131,19 @@ document.querySelectorAll('form[data-form]').forEach(form => {
           successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
         showToast('✓ Sent! We\'ll be in touch within 24 hours.');
+
+        // Fire GA4 conversion event
+        if (typeof gtag === 'function') {
+          const formType = form.dataset.form || 'unknown';
+          gtag('event', 'form_submission', {
+            event_category: 'conversion',
+            event_label: formType,
+          });
+          // Also fire the specific conversion types Google Ads needs
+          if (formType === 'consult' || formType === 'contact' || formType === 'intake') {
+            gtag('event', 'generate_lead', { event_category: 'conversion' });
+          }
+        }
       } else {
         throw new Error('Network response was not ok');
       }
