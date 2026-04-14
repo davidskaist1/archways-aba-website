@@ -13,8 +13,13 @@ exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') return { statusCode: 405, headers: cors, body: '' };
 
   try {
-    const { messages } = JSON.parse(event.body || '{}');
+    const { messages, reason } = JSON.parse(event.body || '{}');
     if (!Array.isArray(messages)) return { statusCode: 400, headers: cors, body: '{"error":"Invalid"}' };
+
+    const reasonLabel = reason === 'timeout'   ? 'Timed Out (10 min inactivity)'
+                      : reason === 'user'      ? 'User Ended Conversation'
+                      : reason === 'ai'        ? 'AI Completed Intake'
+                      : 'Conversation Ended';
 
     const transcript = messages
       .filter(m => m.role !== 'system')
@@ -76,8 +81,9 @@ Notes:`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        _subject: `🤖 New Chatbot Lead — ${timestamp}`,
+        _subject: `🤖 Maya Chat Lead — ${reasonLabel} — ${timestamp}`,
         source: 'Website Chatbot (Maya)',
+        end_reason: reasonLabel,
         time: timestamp,
         intake_summary: extractedInfo,
         full_transcript: transcript,

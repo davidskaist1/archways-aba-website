@@ -14,11 +14,24 @@
   const GREETING = "Hi there! 👋 I'm Maya, Archways ABA's AI assistant. I'm here to answer your questions and help connect your family with our team. Whether you're just starting to wonder about your child's development or you're ready to get started with ABA therapy — what's on your mind today?";
 
   // ── State ────────────────────────────────────────────────────────────
-  let history    = []; // [{role:'user'|'assistant', content:'...'}]
-  let isWaiting  = false;
-  let isEnded    = false;
-  let isOpen     = false;
-  let greeted    = false;
+  let history         = []; // [{role:'user'|'assistant', content:'...'}]
+  let isWaiting       = false;
+  let isEnded         = false;
+  let isOpen          = false;
+  let greeted         = false;
+  let inactivityTimer = null;
+
+  const INACTIVITY_MS = 10 * 60 * 1000; // 10 minutes
+
+  function resetInactivityTimer() {
+    if (inactivityTimer) clearTimeout(inactivityTimer);
+    if (isEnded || history.length === 0) return;
+    inactivityTimer = setTimeout(() => {
+      if (!isEnded && history.length > 0) {
+        endConversation('timeout');
+      }
+    }, INACTIVITY_MS);
+  }
 
   // Intake progress tracking (regex matches on user messages)
   const intakeSignals = [
@@ -235,6 +248,7 @@
 
     appendMessage('user', text);
     history.push({ role: 'user', content: text });
+    resetInactivityTimer();
 
     setWaiting(true);
     showTyping();
@@ -253,10 +267,11 @@
       const reply = data.reply || "I'm sorry, I had trouble connecting. Please try again or call us at (314) 668-2866.";
       appendMessage('bot', reply);
       history.push({ role: 'assistant', content: reply });
+      resetInactivityTimer();
 
-      // Detect conversation completion signal
-      if (reply.toLowerCase().includes('our team will be in touch soon')) {
-        await endConversation(true);
+      // AI signals the conversation is complete
+      if (data.done) {
+        await endConversation('ai');
       }
 
     } catch (err) {
@@ -270,13 +285,19 @@
   }
 
   // ── End conversation ─────────────────────────────────────────────────
-  async function endConversation(auto = false) {
+  // reason: 'ai' | 'user' | 'timeout'
+  async function endConversation(reason) {
     if (isEnded) return;
     isEnded = true;
 
-    if (!auto) {
+    if (inactivityTimer) { clearTimeout(inactivityTimer); inactivityTimer = null; }
+
+    if (reason === 'timeout') {
+      appendMessage('bot', "It looks like things got busy — no worries! I'm sending what we've discussed to our intake team so they can follow up with you. You can also reach us anytime at (314) 668-2866. Take care! 💙");
+    } else if (reason === 'user') {
       appendMessage('bot', "Thank you so much for chatting with me! I'm sending your information to our intake team right now. Someone will reach out within 1 business day. You can also call us anytime at (314) 668-2866. Take care! 💙");
     }
+    // 'ai' — Maya already said her wrap-up message, no extra message needed
 
     // Disable input
     const inputArea = $('archways-chat-input-area');
@@ -292,12 +313,13 @@
     const fill = $('archways-progress-fill');
     if (fill) fill.style.width = '100%';
 
-    // Send summary to intake team
+    // Send summary + transcript to intake team — only if there's something to send
+    if (history.length === 0) return;
     try {
       await fetch(SUMMARY_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history }),
+        body: JSON.stringify({ messages: history, reason }),
       });
     } catch (err) {
       console.warn('Maya: summary send failed', err);
@@ -312,7 +334,7 @@
 
     $('archways-end-btn').addEventListener('click', () => {
       if (confirm('End this conversation and notify our team? They will follow up within 1 business day.')) {
-        endConversation(false);
+        endConversation('user');
       }
     });
 

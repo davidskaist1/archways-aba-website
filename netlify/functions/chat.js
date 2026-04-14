@@ -115,7 +115,10 @@ exports.handler = async (event) => {
     const data = await res.json();
     const reply = data.content?.[0]?.text || "I'm not sure how to respond to that — please call us at (314) 668-2866!";
 
-    return { statusCode: 200, headers: cors, body: JSON.stringify({ reply }) };
+    // Signal the frontend to close the conversation when Maya wraps up
+    const done = reply.toLowerCase().includes('our team will be in touch soon');
+
+    return { statusCode: 200, headers: cors, body: JSON.stringify({ reply, done }) };
 
   } catch (err) {
     console.error('Chat function error:', err);
