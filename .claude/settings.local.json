@@ -121,7 +121,9 @@
       "Bash(grep -l \"GA_MEASUREMENT_ID\\\\|gtag\\\\|googletagmanager\" /c/Users/dovid/.claude/Website/*.html)",
       "Bash(grep -rn \"gtag\\\\|GA_MEASUREMENT\\\\|googletagmanager\" /c/Users/dovid/.claude/Website/*.html)",
       "Bash(sed -i 's/G-XXXXXXXXXX/G-EECKBC7Y22/g' /c/Users/dovid/.claude/Website/*.html)",
-      "Bash(sed -i 's/GA_MEASUREMENT_ID/G-EECKBC7Y22/g' /c/Users/dovid/.claude/Website/*.html)"
+      "Bash(sed -i 's/GA_MEASUREMENT_ID/G-EECKBC7Y22/g' /c/Users/dovid/.claude/Website/*.html)",
+      "Bash(grep -n \"school-consultation\" services/*.html)",
+      "Bash(grep -n \"nav nav--white\" services/*.html)"
     ]
   }
 }
