@@ -124,26 +124,17 @@ document.querySelectorAll('form[data-form]').forEach(form => {
       }
 
       if (res.ok) {
-        form.reset();
-        const successEl = form.querySelector('.form-success');
-        if (successEl) {
-          successEl.style.display = 'block';
-          successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-        showToast('✓ Sent! We\'ll be in touch within 24 hours.');
-
-        // Fire GA4 conversion event
+        // Fire GA4 conversion event before redirect
         if (typeof gtag === 'function') {
           const formType = form.dataset.form || 'unknown';
           gtag('event', 'form_submission', {
             event_category: 'conversion',
             event_label: formType,
           });
-          // Also fire the specific conversion types Google Ads needs
-          if (formType === 'consult' || formType === 'contact' || formType === 'intake') {
-            gtag('event', 'generate_lead', { event_category: 'conversion' });
-          }
+          gtag('event', 'generate_lead', { event_category: 'conversion' });
         }
+        // Redirect to thank-you page for all forms
+        window.location.href = '/thank-you.html';
       } else {
         throw new Error('Network response was not ok');
       }
