@@ -1457,7 +1457,7 @@ p {
   margin-bottom: var(--space-2);
 }
 
-.form-group input,
+.form-group input:not([type="checkbox"]):not([type="radio"]),
 .form-group select,
 .form-group textarea {
   width: 100%;
@@ -1475,13 +1475,13 @@ p {
   -webkit-appearance: none;
 }
 
-.form-group input:hover,
+.form-group input:not([type="checkbox"]):not([type="radio"]):hover,
 .form-group select:hover,
 .form-group textarea:hover {
   border-color: var(--color-border-strong);
 }
 
-.form-group input:focus,
+.form-group input:not([type="checkbox"]):not([type="radio"]):focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
