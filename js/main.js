@@ -114,6 +114,14 @@ document.querySelectorAll('form[data-form]').forEach(form => {
             referral_source: 'website_homepage',
           }),
         });
+      } else if (form.dataset.form === 'careers') {
+        // Careers application form → Netlify function → Supabase HR pipeline
+        const data = Object.fromEntries(new FormData(form).entries());
+        res = await fetch('https://app.archwaysaba.com/.netlify/functions/formspree-candidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
       } else {
         // All other forms (referral etc.) go straight to Formspree
         res = await fetch(form.action, {
