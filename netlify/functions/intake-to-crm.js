@@ -5,6 +5,30 @@ const SUPABASE_URL = process.env.SUPABASE_URL
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY
 const FORMSPREE_ID = process.env.FORMSPREE_CONTACT_ID || 'mpqyvdya'
 
+function deriveSource(utm_source, utm_medium, referrer) {
+  if (utm_source) {
+    const src = utm_source.toLowerCase()
+    const med = (utm_medium || '').toLowerCase()
+    if (src === 'google' && (med === 'cpc' || med === 'ppc' || med === 'paid')) return 'Google Ads'
+    if (src === 'google') return 'Google (Organic/Other)'
+    if (src === 'facebook' || src === 'instagram' || src === 'meta') return 'Meta Ads'
+    if (src === 'email' || med === 'email') return 'Email Campaign'
+    // Capitalise whatever they passed
+    return utm_source.charAt(0).toUpperCase() + utm_source.slice(1)
+  }
+  if (referrer) {
+    try {
+      const host = new URL(referrer).hostname.replace(/^www\./, '')
+      if (host.includes('google'))    return 'Organic Search (Google)'
+      if (host.includes('bing'))      return 'Organic Search (Bing)'
+      if (host.includes('yahoo'))     return 'Organic Search (Yahoo)'
+      if (host.includes('facebook') || host.includes('instagram')) return 'Social (Organic)'
+      return `Referral (${host})`
+    } catch {}
+  }
+  return 'Direct'
+}
+
 function parseChildAge(ageStr) {
   if (!ageStr) return null
   const match = ageStr.match(/\d+/)
@@ -46,7 +70,11 @@ exports.handler = async (event) => {
       parent_name, child_name, email, phone,
       child_age, county, insurance, service_type,
       diagnosis, message, referral_source,
+      utm_source, utm_medium, utm_campaign, utm_content, utm_term,
+      referrer, landing_page,
     } = body
+
+    const derivedSource = referral_source || deriveSource(utm_source, utm_medium, referrer)
 
     const { first, last } = parseChildName(child_name)
 
@@ -72,11 +100,11 @@ exports.handler = async (event) => {
           service_type: parseServiceType(service_type),
           diagnosis: diagnosis ?? null,
           initial_notes: message ?? null,
-          referral_source: referral_source ?? null,
+          referral_source: derivedSource,
           status: 'inquiry',
           primary_stage: 'new_inquiry',
           active_stages: ['new_inquiry'],
-          intake_form_source: 'Website Form',
+          intake_form_source: derivedSource,
           state: 'MO',
         }),
       })

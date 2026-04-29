@@ -79,6 +79,23 @@ function showToast(message, duration = 4000) {
   setTimeout(() => toast.classList.remove('show'), duration);
 }
 
+// ── UTM / lead source capture ──────────────────────────────────
+(function captureUtm() {
+  // First-touch: only capture once per session (don't overwrite on page navigations)
+  if (sessionStorage.getItem('_utm_captured')) return;
+  const p = new URLSearchParams(window.location.search);
+  sessionStorage.setItem('_utm', JSON.stringify({
+    utm_source:   p.get('utm_source')   || null,
+    utm_medium:   p.get('utm_medium')   || null,
+    utm_campaign: p.get('utm_campaign') || null,
+    utm_content:  p.get('utm_content')  || null,
+    utm_term:     p.get('utm_term')     || null,
+    referrer:     document.referrer     || null,
+    landing_page: window.location.pathname,
+  }));
+  sessionStorage.setItem('_utm_captured', '1');
+})();
+
 // ── Contact / Application forms ────────────────────────────────
 document.querySelectorAll('form[data-form]').forEach(form => {
   form.addEventListener('submit', async (e) => {
@@ -90,10 +107,12 @@ document.querySelectorAll('form[data-form]').forEach(form => {
 
     try {
       let res;
+      // Attach UTM/source data captured on landing
+      const _utm = JSON.parse(sessionStorage.getItem('_utm') || '{}');
 
       if (form.dataset.form === 'contact' || form.dataset.form === 'intake') {
         // Contact page intake form → Netlify function → Supabase CRM
-        const data = Object.fromEntries(new FormData(form).entries());
+        const data = Object.assign(Object.fromEntries(new FormData(form).entries()), _utm);
         res = await fetch('/.netlify/functions/intake-to-crm', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -105,18 +124,17 @@ document.querySelectorAll('form[data-form]').forEach(form => {
         res = await fetch('/.netlify/functions/intake-to-crm', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
+          body: JSON.stringify(Object.assign({
             parent_name: raw.name,
             phone: raw.phone,
             email: raw.email,
             county: raw.county,
             message: raw.message,
-            referral_source: 'website_homepage',
-          }),
+          }, _utm)),
         });
       } else if (form.dataset.form === 'careers') {
         // Careers application form → Netlify function → Supabase HR pipeline
-        const data = Object.fromEntries(new FormData(form).entries());
+        const data = Object.assign(Object.fromEntries(new FormData(form).entries()), _utm);
         res = await fetch('https://app.archwaysaba.com/.netlify/functions/formspree-candidate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
