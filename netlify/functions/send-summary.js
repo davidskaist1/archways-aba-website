@@ -3,14 +3,14 @@
 // ── Microsoft Graph: get OAuth2 token ────────────────────────────────────────
 async function getGraphToken() {
   const res = await fetch(
-    `https://login.microsoftonline.com/${process.env.AZURE_TENANT_ID}/oauth2/v2.0/token`,
+    `https://login.microsoftonline.com/${process.env.MS_TENANT_ID}/oauth2/v2.0/token`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
         grant_type:    'client_credentials',
-        client_id:     process.env.AZURE_CLIENT_ID,
-        client_secret: process.env.AZURE_CLIENT_SECRET,
+        client_id:     process.env.MS_CLIENT_ID,
+        client_secret: process.env.MS_CLIENT_SECRET,
         scope:         'https://graph.microsoft.com/.default',
       }),
     }
@@ -23,7 +23,7 @@ async function getGraphToken() {
 // ── Send confirmation email to parent via Outlook / Graph API ─────────────────
 async function sendParentConfirmation(parentName, parentEmail) {
   const token       = await getGraphToken();
-  const sender      = process.env.OUTLOOK_SENDER_EMAIL; // e.g. info@archwaysaba.com
+  const sender      = process.env.MS_SENDER_EMAIL; // e.g. info@archwaysaba.com
   const firstName   = (parentName || '').split(' ')[0] || 'there';
 
   const htmlBody = `
@@ -287,10 +287,10 @@ ${transcript}`,
     // ── 3. Send confirmation email to parent via Outlook (Graph API) ──────────
     if (
       parentEmail &&
-      process.env.AZURE_TENANT_ID &&
-      process.env.AZURE_CLIENT_ID &&
-      process.env.AZURE_CLIENT_SECRET &&
-      process.env.OUTLOOK_SENDER_EMAIL
+      process.env.MS_TENANT_ID &&
+      process.env.MS_CLIENT_ID &&
+      process.env.MS_CLIENT_SECRET &&
+      process.env.MS_SENDER_EMAIL
     ) {
       try {
         await sendParentConfirmation(parentName, parentEmail);
