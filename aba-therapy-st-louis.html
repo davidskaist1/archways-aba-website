@@ -549,5 +549,19 @@ document.querySelectorAll(".copyright-year").forEach(function(el){el.textContent
   });
 })();
 </script>
+
+<script>
+// CRM intake — fires alongside Formspree, requires no webhook
+document.querySelectorAll('form[action*="formspree.io"]').forEach(function(form) {
+  form.addEventListener('submit', function() {
+    var data = Object.fromEntries(new FormData(form).entries());
+    fetch('https://app.archwaysaba.com/.netlify/functions/formspree-intake', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).catch(function() {}); // silent — never blocks the form
+  });
+});
+</script>
 </body>
 </html>
